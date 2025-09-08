@@ -440,10 +440,7 @@
         </div>
     </div>
     <!-- Testimonial End -->
-     @endsection
+@endsection
 
 
 
-</body>
-
-</html>
