@@ -584,8 +584,8 @@
                   <script>
                     document.write(new Date().getFullYear());
                   </script>
-                  , made with ❤️ by
-                  <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">ThemeSelection</a>
+                  , made by
+                  <a href="#" target="_blank" class="footer-link fw-bolder">Tanvir Islam(Sunni Shibir)</a>
                 </div>
                 <div>
                   <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>
