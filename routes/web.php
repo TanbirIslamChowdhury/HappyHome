@@ -36,7 +36,7 @@ Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
-
+// admin routes
 
 Route::get('/admin', function () {
     return view('admin');
