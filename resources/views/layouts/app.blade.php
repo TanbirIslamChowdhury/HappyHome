@@ -129,7 +129,7 @@
                   </g>
                 </svg>
               </span>
-              <span class="app-brand-text demo menu-text fw-bolder ms-2">Sneat</span>
+              <span class="app-brand-text demo menu-text fw-bolder ms-2">Happy Home</span>
             </a>
 
             <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -585,7 +585,7 @@
                     document.write(new Date().getFullYear());
                   </script>
                   , made by
-                  <a href="#" target="_blank" class="footer-link fw-bolder">Tanvir Islam(Sunni Shibir)</a>
+                  <a href="#" target="_blank" class="footer-link fw-bolder">Tanbir Islam(Shibir)</a>
                 </div>
                 <div>
                   <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>
