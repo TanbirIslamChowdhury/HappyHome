@@ -1,0 +1,65 @@
+*composer create-project "laravel/laravel:^10.0" moneymanagment
+
+
+to run application/website
+*php artisan serve 
+
+if you download a laravel project from github then run this command
+*composer install
+*cp .env.example .env
+*php artisan key:generate
+
+
+to create a category crud
+*php artisan make:model Category -m -r
+	this command will make 
+	1. model in model folder ( we will add protected fillable variable with all the column name except id and created_at and updated_at
+	2. migration file in database/migrations (we will add more column whatever we need)
+	3. controller in app/http/controllers folder ( we will get all 7 function what we need for CRUD, we have to update function)
+
+*php artisan migrate
+	it will create a table in database
+
+authentication
+*composer require laravel/ui
+*php artisan ui bootstrap --auth
+*npm install
+*npm run build
+
+
+
+
+*git clone https://github.com/ether0606/wallet
+*cd wallet
+*composer install
+*cp .env.example .env
+*php artisan key:generate
+*php artisan migrate
+
+
+laravel api auth
+*composer require laravel/sanctum
+*php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
+*php artisan make:controller Api/UserAuthController
+
+
+
+laravel email config in env
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=465
+MAIL_USERNAME=idbbatch64@gmail.com
+MAIL_PASSWORD=zsnsjsqlxmatqzly
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS="idbbatch64@gmail.com"
+MAIL_FROM_NAME="${APP_NAME}"
+
+
+*php artisan make:mail EmailClassName
+
+then make a view file in view folder and add that file location in the EmailClassName file
+to use email from controller
+
+Mail::to("shariful0606@gmail.com")->send(new EmailClassName);
+
+
