@@ -42,6 +42,14 @@ Route::get('/products',function(){
 
 // admin routes
 
-Route::get('/admin', function () {
-    return view('admin');
-})->name('admin');
+// Route::get('/admin', function () {
+//     return view('admin');
+// })->name('admin');
+Auth::routes();
+
+Route::middleware('auth:web')->group(function(){
+  Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
+
+});
+
+
