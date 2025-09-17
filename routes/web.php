@@ -40,11 +40,38 @@ Route::get('/products',function(){
     return view('products');
 })->name('products');
 
-// admin routes
+//admin routes
 
-// Route::get('/admin', function () {
-//     return view('admin');
-// })->name('admin');
+Route::get('/admin_orders', function () {
+     return view('admin_orders');
+ })->name('admin_orders');
+
+
+
+ Route::get('/admin_bookings', function () {
+     return view('admin_bookings');
+ })->name('admin_bookings');
+
+
+
+ Route::get('/admin_products', function () {
+     return view('admin_products');
+ })->name('admin_products');
+
+
+
+Route::get('/admin_technicians', function () {
+     return view('admin_technicians');
+ })->name('admin_technicians');
+
+
+
+ Route::get('/admin_users', function () {
+     return view('admin_users');
+ })->name('admin_users');
+
+
+
 Auth::routes();
 
 Route::middleware('auth:web')->group(function(){
