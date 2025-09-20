@@ -266,9 +266,12 @@
                                             placeholder="Service Date" data-target="#date1" data-toggle="datetimepicker" style="height: 55px;">
                                     </div>
                                 </div>
-                                <div class="col-12">
-                                    <textarea class="form-control border-0" placeholder="Special Request"></textarea>
+                               <div class="col-12">
+                                    <textarea class="form-control border-0" placeholder="Address"></textarea>
                                 </div>
+                                {{-- <div class="col-12">
+                                    <textarea class="form-control border-0" placeholder="Special Request"></textarea>
+                                </div> --}}
                                 <div class="col-12">
                                     <button class="btn btn-primary w-100 py-3" type="submit">Book Now</button>
                                 </div>
