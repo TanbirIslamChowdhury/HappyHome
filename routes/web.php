@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,9 +37,9 @@ Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
-Route::get('/products',function(){
+Route::get('/front_products',function(){
     return view('products');
-})->name('products');
+})->name('front_products');
 
 //admin routes
 
@@ -51,12 +52,6 @@ Route::get('/admin_orders', function () {
  Route::get('/admin_bookings', function () {
      return view('admin_bookings');
  })->name('admin_bookings');
-
-
-
- Route::get('/admin_products', function () {
-     return view('admin_products');
- })->name('admin_products');
 
 
 
@@ -76,6 +71,7 @@ Auth::routes();
 
 Route::middleware('auth:web')->group(function(){
   Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
+  Route::resource('products', ProductsController::class);
 
 });
 

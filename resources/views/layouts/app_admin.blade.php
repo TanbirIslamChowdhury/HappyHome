@@ -192,7 +192,7 @@
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="{{route('admin_products')}}" class="menu-link">
+                  <a href="{{route('products.index')}}" class="menu-link">
                     <div data-i18n="Account">Products</div>
                   </a>
                 </li>

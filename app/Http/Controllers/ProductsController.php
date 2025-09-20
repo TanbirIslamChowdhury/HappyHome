@@ -5,14 +5,19 @@ namespace App\Http\Controllers;
 use App\Models\products;
 use Illuminate\Http\Request;
 
+use App\Http\Requests\Products\AddNewRequest;
+use Illuminate\Support\Facades\Validator;
+
 class ProductsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+                  $data=products::all();
+        return view('products.index', compact('data'));
+        
     }
 
     /**
@@ -20,7 +25,7 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        //
+        return view('products.create');
     }
 
     /**
@@ -28,7 +33,8 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+              products::create($request->all());
+        return redirect()->route('products.index');
     }
 
     /**
@@ -42,24 +48,28 @@ class ProductsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(products $products)
+    public function edit($id)
     {
-        //
+        $products=Products::find($id);
+          return view('products.edit', compact('products'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, products $products)
+    public function update(Request $request,  $id)
     {
-        //
-    }
-
+        $products=Products::find($id);
+        $products->update($request->all());
+        return redirect()->route('products.index');
+}
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(products $products)
+    public function destroy( $id)
     {
-        //
+        $products=Products::find($id);
+        $products->delete();
+        return redirect()->back();
     }
 }
