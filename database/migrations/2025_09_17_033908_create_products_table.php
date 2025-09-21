@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('description');
             $table->decimal('price', 9, 2);
             $table->integer('stock_quantity');
+            $table->string('image');
         });
     }
 
