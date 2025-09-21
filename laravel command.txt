@@ -63,3 +63,15 @@ to use email from controller
 Mail::to("shariful0606@gmail.com")->send(new EmailClassName);
 
 
+Route::middleware('auth:web')->group(function () {
+    Route::resource('investment-types', InvestmentTypeController::class);
+    Route::resource('daily-transection', DailyTransectionController::class);
+    Route::post('/daily-transection-bulk-store', [DailyTransectionController::class, 'bulkStore'])->name('daily-transection.bulk-store');
+});
+
+
+
+district divison package
+*composer require devfaysal/laravel-bangladesh-geocode
+*php artisan BangladeshGeocode:setup
+
