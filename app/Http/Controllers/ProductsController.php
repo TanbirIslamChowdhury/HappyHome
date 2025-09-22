@@ -15,7 +15,7 @@ class ProductsController extends Controller
      */
     public function index(Request $request)
     {
-                  $data=products::all();
+        $data=products::all();
         return view('products.index', compact('data'));
         
     }
@@ -32,8 +32,14 @@ class ProductsController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-              products::create($request->all());
+    {              
+        $input=$request->all();
+        if($request->hasfile('image')){
+            $fileName=time().'.'.$request->image->extension();
+            $request->image->move(public_path('uploads'),$fileName);
+            $input['image']=$fileName;
+        }
+        products::create($input);
         return redirect()->route('products.index');
     }
 

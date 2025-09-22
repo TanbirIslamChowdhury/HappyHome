@@ -188,32 +188,32 @@
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                <div data-i18n="Account Settings">Pages</div>
+                <div data-i18n="Account Settings" class=" text-primary">Pages</div>
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
                   <a href="{{route('products.index')}}" class="menu-link">
-                    <div data-i18n="Account">Products</div>
+                    <div data-i18n="Account" class=" text-primary">Products</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="{{route('admin_technicians')}}" class="menu-link">
-                    <div data-i18n="Notifications">Technicians</div>
+                  <a href="{{route('technicians.index')}}" class="menu-link">
+                    <div data-i18n="Notifications" class=" text-primary">Technicians</div>
                   </a>
                 </li>
                 <li class="menu-item">
                   <a href="{{route('admin_users')}}" class="menu-link">
-                    <div data-i18n="Connections">Users</div>
+                    <div data-i18n="Connections" class=" text-primary">Users</div>
                   </a>
                 </li>
                 <li class="menu-item">
                   <a href="{{('admin_orders')}}" class="menu-link">
-                    <div data-i18n="Connections">Orders</div>
+                    <div data-i18n="Connections" class=" text-primary">Orders</div>
                   </a>
                 </li>
                 <li class="menu-item">
                   <a href="{{('admin_bookings')}}" class="menu-link">
-                    <div data-i18n="Connections">Bookings</div>
+                    <div data-i18n="Connections" class=" text-primary">Bookings</div>
                   </a>
                 </li>
               </ul>

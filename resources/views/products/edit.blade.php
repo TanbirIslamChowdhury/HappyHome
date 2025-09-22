@@ -6,7 +6,7 @@
         <!--  Row 1 -->
         <div class="row">
             <h3>Update products</h3>
-                <form action="{{route('products.update', $products->id)}}" method="post">
+                <form action="{{route('products.update', $products->id)}}" method="post"  enctype="multipart/form-data">
                     @csrf
                     @method('PATCH')
                 <div class="form-group">
@@ -25,7 +25,11 @@
                 </div>
                   <div class="form-group">
                     <label for="stock_quantity">Stock Quantity</label>
-                    <input type="text" class="form-control" id="stock_quantity" name="stock_quantity"  value="{{$products->price}}">
+                    <input type="text" class="form-control" id="stock_quantity" name="stock_quantity"  value="{{$products->stock_quantity}}">
+                </div>
+              <div class="form-group">
+                    <label for="image">Image</label>
+                    <input type="file" class="form-control" id="image" name="image"  value="{{$products->image}}">
                 </div>
 
 

@@ -1,5 +1,5 @@
 @extends('layouts.app_admin')
-@section('pageTitle',"Products list")
+@section('pageTitle',"technicians list")
 @section('content')
  
 
@@ -10,7 +10,7 @@
                       <h5 class="mb-0 text-primary" >Add New</h5>
                     </div>
                     <div class="card-body">
-                      <form method="post" action="{{route('products.store')}}" enctype="multipart/form-data">
+                      <form method="post" action="{{route('technicians.store')}}" enctype="multipart/form-data">
                         @csrf
                         <div class="row mb-3">
                           <label class="col-sm-2 col-form-label text-primary" for="name">Name</label>
@@ -19,19 +19,19 @@
                           </div>
                         </div>
                         <div class="row mb-3">
-                          <label class="col-sm-2 col-form-label text-primary" for="description">Description</label>
+                          <label class="col-sm-2 col-form-label text-primary" for="email">Email</label>
                           <div class="col-sm-10">
                             <input
-                              type="text" class="form-control" id="description" name="description"
+                              type="text" class="form-control" id="email" name="email"
                             />
                           </div>
                         </div>
                         <div class="row mb-3">
-                          <label class="col-sm-2 col-form-label text-primary" for="price">Price</label>
+                          <label class="col-sm-2 col-form-label text-primary" for="password">Password</label>
                           <div class="col-sm-10">
                             <div class="input-group input-group-merge">
                               <input
-                                type="text" id="price"name="price"  class="form-control"
+                                type="text" id="password"name="password"  class="form-control"
                               />
                            </div>
                           </div>
@@ -39,19 +39,19 @@
                           
                           
                         <div class="row mb-3">
-                          <label class="col-sm-2 col-form-label text-primary" for="stock_quantity">Stock Quantity</label>
+                          <label class="col-sm-2 col-form-label text-primary" for="phone_number">Phone Number</label>
                           <div class="col-sm-10">
                             <input
-                              type="text" id="stock_quantity" name="stock_quantity"
+                              type="text" id="phone_number" name="phone_number"
                               class="form-control phone-mask"
                             />
                           </div>
                         </div>
                          <div class="row mb-3">
-                          <label class="col-sm-2 col-form-label text-primary" for="image">Image</label>
+                          <label class="col-sm-2 col-form-label text-primary" for="specialization">Specialization</label>
                           <div class="col-sm-10">
                             <input
-                              type="file" id="image" name="image"
+                              type="text" id="specialization" name="specialization"
                               class="form-control phone-mask text-primary"
                             />
                           </div>

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\TechniciansController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,9 +56,9 @@ Route::get('/admin_orders', function () {
 
 
 
-Route::get('/admin_technicians', function () {
-     return view('admin_technicians');
- })->name('admin_technicians');
+// Route::get('/admin_technicians', function () {
+//      return view('admin_technicians');
+//  })->name('admin_technicians');
 
 
 
@@ -72,6 +73,7 @@ Auth::routes();
 Route::middleware('auth:web')->group(function(){
   Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
   Route::resource('products', ProductsController::class);
+  Route::resource('technicians', TechniciansController::class);
 
 });
 
