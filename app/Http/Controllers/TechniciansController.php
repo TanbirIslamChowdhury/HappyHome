@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\technicians;
 use Illuminate\Http\Request;
-use App\Http\Requests\Products\AddNewRequest;
+use App\Http\Requests\Technicians\AddNewRequest;
 use Illuminate\Support\Facades\Validator;
 
 class TechniciansController extends Controller
@@ -32,7 +32,8 @@ class TechniciansController extends Controller
      */
     public function store(Request $request)
     {
-        products::create($input);
+         $input=$request->all();
+        technicians::create($input);
         return redirect()->route('technicians.index');
     }
 
