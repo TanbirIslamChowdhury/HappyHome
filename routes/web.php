@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\FronProductController;
 use App\Http\Controllers\TechniciansController;
 
 /*
@@ -38,9 +39,12 @@ Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
-Route::get('/front_products',function(){
-    return view('products');
-})->name('front_products');
+
+Route::get('frontProduct',[FronProductController::class,'products'])->name ('products');
+
+// Route::get('/front_products',function(){
+//     return view('products');
+// })->name('front_products');
 
 //admin routes
 
