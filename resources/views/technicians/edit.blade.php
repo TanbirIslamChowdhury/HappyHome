@@ -27,14 +27,16 @@
                     <label for="phone_number">Phone Number</label>
                     <input type="text" class="form-control" id="phone_number" name="phone_number"  value="{{$technicians->phone_number}}">
                 </div>
+
               <div class="form-group">
                     <label for="specialization">Specialization</label>
-                    <input type="file" class="form-control" id="specialization" name="specialization"  value="{{$technicians->specialization}}">
+                    <input type="text" class="form-control" id="specialization" name="specialization"  value="{{$technicians->specialization}}">
                 </div>
 
-
-
-
+                 <div class="form-group">
+                    <label for="certification">Certification</label>
+                    <input type="text" class="form-control" id="certification" name="certification"  value="{{$technicians->certification}}">
+                </div>
 
 
 

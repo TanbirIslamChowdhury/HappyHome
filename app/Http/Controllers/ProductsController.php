@@ -65,8 +65,14 @@ class ProductsController extends Controller
      */
     public function update(Request $request,  $id)
     {
+        $input=$request->all();
+        if($request->hasfile('image')){
+            $fileName=time().'.'.$request->image->extension();
+            $request->image->move(public_path('uploads'),$fileName);
+            $input['image']=$fileName;
+        }
         $products=Products::find($id);
-        $products->update($request->all());
+        $products->update($input);
         return redirect()->route('products.index');
 }
     /**

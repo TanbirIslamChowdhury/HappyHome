@@ -53,11 +53,17 @@
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="{{asset('admin_assets/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css')}}" />
 
+ <link rel="stylesheet" href="{{asset('admin_assets/assets/css/bootstrap.min.css')}}" />
+  
+
     <link rel="stylesheet" href="{{asset('admin_assets/assets/vendor/libs/apex-charts/apex-charts.css')}}" />
 
+    <link rel="stylesheet" href="{{asset('admin_assets/assets/vendor/libs/apex-charts/apex-charts.css')}}" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Page CSS -->
 
     <!-- Helpers -->
+
     <script src="{{asset('admin_assets/assets/vendor/js/helpers.js')}}"></script>
 
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
@@ -129,7 +135,7 @@
                   </g>
                 </svg>
               </span>
-              <span class="app-brand-text demo menu-text fw-bolder ms-2">Happy Home</span>
+              <span class="app-brand-text demo menu-text fw-bolder ms-2  text-primary">Happy Home</span>
             </a>
 
             <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -144,7 +150,7 @@
             <li class="menu-item active">
               <a href="{{route('admin')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Dashboard</div>
+                <div data-i18n="Analytics" >Dashboard</div>
               </a>
             </li>
 
@@ -190,30 +196,30 @@
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>
                 <div data-i18n="Account Settings" class=" text-primary">Pages</div>
               </a>
-              <ul class="menu-sub">
-                <li class="menu-item">
+              <ul class="menu-sub text-primary">
+                <li class="menu-item ">
                   <a href="{{route('products.index')}}" class="menu-link">
-                    <div data-i18n="Account" class=" text-primary">Products</div>
+                    <div data-i18n="Account" class=" text-dark">Products</div>
                   </a>
                 </li>
                 <li class="menu-item">
                   <a href="{{route('technicians.index')}}" class="menu-link">
-                    <div data-i18n="Notifications" class=" text-primary">Technicians</div>
+                    <div data-i18n="Notifications" class=" text-danger">Technicians</div>
                   </a>
                 </li>
                 <li class="menu-item">
                   <a href="{{route('admin_users')}}" class="menu-link">
-                    <div data-i18n="Connections" class=" text-primary">Users</div>
+                    <div data-i18n="Connections" class=" text-info">Users</div>
                   </a>
                 </li>
                 <li class="menu-item">
                   <a href="{{('admin_orders')}}" class="menu-link">
-                    <div data-i18n="Connections" class=" text-primary">Orders</div>
+                    <div data-i18n="Connections" class=" text-warning">Orders</div>
                   </a>
                 </li>
                 <li class="menu-item">
                   <a href="{{('admin_bookings')}}" class="menu-link">
-                    <div data-i18n="Connections" class=" text-primary">Bookings</div>
+                    <div data-i18n="Connections" class=" text-success">Bookings</div>
                   </a>
                 </li>
               </ul>
@@ -476,7 +482,7 @@
         <div class="layout-page">
           <!-- Navbar -->
 
-          <nav
+          <nav style="width: 100%"
             class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
             id="layout-navbar"
           >
@@ -666,3 +672,4 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
   </body>
 </html>
+

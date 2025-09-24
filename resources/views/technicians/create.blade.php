@@ -47,12 +47,22 @@
                             />
                           </div>
                         </div>
+
                          <div class="row mb-3">
                           <label class="col-sm-2 col-form-label text-primary" for="specialization">Specialization</label>
                           <div class="col-sm-10">
                             <input
                               type="text" id="specialization" name="specialization"
-                              class="form-control phone-mask text-primary"
+                              class="form-control phone-mask "
+                            />
+                          </div>
+                        </div>
+                           <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label text-primary" for="phone_number">Certification</label>
+                          <div class="col-sm-10">
+                            <input
+                              type="text" id="certification" name="certification"
+                              class="form-control phone-mask"
                             />
                           </div>
                         </div>
