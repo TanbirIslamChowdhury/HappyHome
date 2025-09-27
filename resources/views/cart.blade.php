@@ -151,31 +151,31 @@
         });
     }
 
-    function checkCoupon() {
-        let coupon_code = document.getElementById('coupon_code').value;
-        let url = "{{ route('cart.check_coupon') }}";
-        let token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': token
-            },
-            body: JSON.stringify({
-                coupon_code: coupon_code
-            })
-        }).then(response => response.json())
-        .then(data => {
-            if(data.valid) {
-                alert('Coupon applied! Discount: BDT' + data.discount);
-            } else {
-                alert('Invalid coupon code.');
-            }
-            location.reload();
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-    }
+    // function checkCoupon() {
+    //     let coupon_code = document.getElementById('coupon_code').value;
+    //     let url = "{{ route('cart.check_coupon') }}";
+    //     let token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    //     fetch(url, {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //             'X-CSRF-TOKEN': token
+    //         },
+    //         body: JSON.stringify({
+    //             coupon_code: coupon_code
+    //         })
+    //     }).then(response => response.json())
+    //     .then(data => {
+    //         if(data.valid) {
+    //             alert('Coupon applied! Discount: BDT' + data.discount);
+    //         } else {
+    //             alert('Invalid coupon code.');
+    //         }
+    //         location.reload();
+    //     })
+    //     .catch(error => {
+    //         console.error('Error:', error);
+    //     });
+    // }
 </script>
 @endpush

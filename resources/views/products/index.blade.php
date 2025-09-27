@@ -22,9 +22,9 @@
                     </thead>
                     <tbody>
                       <tbody>
-                     @forelse($data as $d)
+                     @forelse($data as $i=>$d)
                       <tr>
-                   <td>{{$d->id}}</td>
+                   <td>{{++$i}}</td>
                    <td>{{$d->name}}</td>
                    <td>{{$d->description}}</td>
                    <td>{{$d->price}}</td>

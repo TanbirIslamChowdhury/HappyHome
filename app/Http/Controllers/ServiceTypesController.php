@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\service_types;
 use Illuminate\Http\Request;
+use App\Http\Requests\Technicians\AddNewRequest;
+use Illuminate\Support\Facades\Validator;
 
 class ServiceTypesController extends Controller
 {
@@ -12,7 +14,9 @@ class ServiceTypesController extends Controller
      */
     public function index()
     {
-        //
+     $data=service_types::all();
+     return view('service_types.index',
+      compact('data'));
     }
 
     /**
@@ -20,7 +24,7 @@ class ServiceTypesController extends Controller
      */
     public function create()
     {
-        //
+        return view('service_types.create');
     }
 
     /**
@@ -28,7 +32,9 @@ class ServiceTypesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $input=$request->all();
+        service_types::create($input);
+        return redirect()->route('service_types.index');
     }
 
     /**
@@ -42,24 +48,29 @@ class ServiceTypesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(service_types $service_types)
+    public function edit($id)
     {
-        //
+         $service_types=service_types::find($id);
+          return view('service_types.edit', compact('service_types'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, service_types $service_types)
+    public function update(Request $request, $id)
     {
-        //
+          $service_types=service_types::find($id);
+        $service_types->update($request->all());
+        return redirect()->route('service_types.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(service_types $service_types)
+    public function destroy($id)
     {
-        //
+         $service_types=service_types::find($id);
+        $service_types->delete();
+        return redirect()->back();
     }
 }

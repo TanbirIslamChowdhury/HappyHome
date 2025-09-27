@@ -246,26 +246,29 @@
                         <form>
                             <div class="row g-3">
                                 <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control border-0" placeholder="Your Name" style="height: 55px;">
+                                    <input type="text" class="form-control border-0" placeholder="Your Name" name="name" style="height: 55px;">
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <input type="email" class="form-control border-0" placeholder="Your Email" style="height: 55px;">
+                                    <input type="email" class="form-control border-0" placeholder="Your Email" name="email" style="height: 55px;">
+                                </div>
+                                  <div class="col-12 col-sm-6">
+                                    <input type="phone_number" name="phone_number" class="form-control border-0" placeholder="Phone" style="height: 55px;">
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <select class="form-select border-0" style="height: 55px;">
+                                    <select class="form-select border-0" name="service"style="height: 55px;">
                                         <option selected>Select A Service</option>
-                                        <option value="1">Service 1</option>
-                                        <option value="2">Service 2</option>
-                                        <option value="3">Service 3</option>
+                                        <option value="1">Plumbing</option>
+                                        <option value="2">Electrical</option>
+                                        <option value="3">Carpenter</option>
                                     </select>
                                 </div>
-                                <div class="col-12 col-sm-6">
+                                {{-- <div class="col-12 col-sm-6">
                                     <div class="date" id="date1" data-target-input="nearest">
                                         <input type="text"
                                             class="form-control border-0 datetimepicker-input"
                                             placeholder="Service Date" data-target="#date1" data-toggle="datetimepicker" style="height: 55px;">
                                     </div>
-                                </div>
+                                </div> --}}
                                <div class="col-12">
                                     <textarea class="form-control border-0" placeholder="Address"></textarea>
                                 </div>
@@ -286,7 +289,7 @@
 
 
     <!-- Team Start -->
-    <div class="container-xxl py-5">
+    {{-- <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                 <h6 class="text-secondary text-uppercase">Our Technicians</h6>
@@ -300,7 +303,7 @@
                         </div>
                         <div class="team-text">
                             <div class="bg-light">
-                                <h5 class="fw-bold mb-0">Full Name</h5>
+                                <h5 class="fw-bold mb-0">jkhjk</h5>
                                 <small>Designation</small>
                             </div>
                             <div class="bg-primary">
@@ -367,7 +370,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Team End -->
 
 

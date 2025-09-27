@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\FronProductController;
 use App\Http\Controllers\TechniciansController;
+use App\Http\Controllers\ServiceTypesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,6 +79,7 @@ Route::middleware('auth:web')->group(function(){
   Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
   Route::resource('products', ProductsController::class);
   Route::resource('technicians', TechniciansController::class);
+  Route::resource('service_types', ServiceTypesController::class);
 
 });
 

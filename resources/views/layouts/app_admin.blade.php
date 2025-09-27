@@ -204,7 +204,12 @@
                 </li>
                 <li class="menu-item">
                   <a href="{{route('technicians.index')}}" class="menu-link">
-                    <div data-i18n="Notifications" class=" text-danger">Technicians</div>
+                    <div data-i18n="Notifications" class=" text-info">Technicians</div>
+                  </a>
+                </li>
+                   <li class="menu-item">
+                  <a href="{{route('service_types.index')}}" class="menu-link">
+                    <div data-i18n="Notifications" class=" text-danger">Services</div>
                   </a>
                 </li>
                 <li class="menu-item">
