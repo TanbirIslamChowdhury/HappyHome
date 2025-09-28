@@ -56,7 +56,7 @@ class CartController extends Controller
     public function viewCart()
     {
         $cart = session::get('cart', []);
-        return view('cart', compact('cart'));
+        return view('cart.cart', compact('cart'));
     }
 
     public function removeFromCart($id)

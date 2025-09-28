@@ -51,7 +51,7 @@
 
 
 
-{{-- @push('scripts')
+ @push('scripts')
     <script>
         function addToCart(productId) {
             // Implement the logic to add the product to the cart
@@ -76,4 +76,4 @@
 
         }
     </script>
-@endpush --}}
+@endpush

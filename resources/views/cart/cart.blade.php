@@ -62,10 +62,7 @@
                     </table>
                 </div>
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                    <div>
-                        <input type="text" class="form-control mb-3" placeholder="Coupon Code" id="coupon_code">
-                        <button class="btn btn-primary w-100" onclick="checkCoupon()">Apply Coupon</button>
-                    </div>
+                    
                     <div class="section-title">
                         <p class="fs-5 fw-medium fst-italic text-primary">Cart Summary</p>
                         <h1 class="display-6">Order Summary</h1>
@@ -99,7 +96,7 @@
                             </span>
                         </li>
                     </ul>
-                    <a href="{{route('checkout')}}" class="btn btn-primary w-100 mt-3">Proceed to Checkout</a>
+                    <a href="{{route('cart.checkout')}}" class="btn btn-primary w-100 mt-3">Proceed to Checkout</a>
                 </div>
 
             </div>
@@ -151,31 +148,6 @@
         });
     }
 
-    // function checkCoupon() {
-    //     let coupon_code = document.getElementById('coupon_code').value;
-    //     let url = "{{ route('cart.check_coupon') }}";
-    //     let token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-    //     fetch(url, {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //             'X-CSRF-TOKEN': token
-    //         },
-    //         body: JSON.stringify({
-    //             coupon_code: coupon_code
-    //         })
-    //     }).then(response => response.json())
-    //     .then(data => {
-    //         if(data.valid) {
-    //             alert('Coupon applied! Discount: BDT' + data.discount);
-    //         } else {
-    //             alert('Invalid coupon code.');
-    //         }
-    //         location.reload();
-    //     })
-    //     .catch(error => {
-    //         console.error('Error:', error);
-    //     });
-    // }
+     
 </script>
 @endpush
