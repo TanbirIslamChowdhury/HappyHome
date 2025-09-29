@@ -17,7 +17,7 @@
                     <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="team-item">
                             <div class="position-relative overflow-hidden">
-                                <img class="img-fluid" src="{{asset('uploads/'.$product->image)}}" alt="image">
+                                <img class="img-fluid"  src="{{asset('uploads/'.$product->image)}}" alt="image">
                             </div>
                             <div class="team-text">
                                   <div class="bg-light">
@@ -66,11 +66,11 @@
             })
             .then(response => response.json())
             .then(data => {
-                //console.log('Success:', data);
+                console.log('Success:', data);
                 alert('Product added to cart!');
             })
             .catch((error) => {
-                //console.error('Error:', error);
+                console.error('Error:', error);
                 alert('Failed to add product to cart.');
             });
 

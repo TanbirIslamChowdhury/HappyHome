@@ -16,7 +16,7 @@
 
                  <div class="form-group">
                     <label for="description">Description</label>
-                    <input type="text" class="form-control" id="description" name="email" value="{{$service_types->description}}">
+                    <input type="text" class="form-control" id="description" name="description" value="{{$service_types->description}}">
                 </div>
 
 

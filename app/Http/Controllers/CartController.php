@@ -10,7 +10,7 @@ class CartController extends Controller
 {
     public function addToCart(Request $request)
     {
-        $product = \App\Models\Product::find($request->product_id);
+        $product = \App\Models\products::find($request->product_id);
         if (!$product) {
             return response()->json(['message' => "No product found."], 404);
         }
@@ -28,7 +28,7 @@ class CartController extends Controller
     }
     public function updateCart(Request $request)
     {
-        $product = \App\Models\Product::find($request->product_id);
+        $product = \App\Models\products::find($request->product_id);
         if (!$product) {
             return response()->json(['message' => $request->all()], 404);
         }

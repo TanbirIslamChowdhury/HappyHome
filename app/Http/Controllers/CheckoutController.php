@@ -84,10 +84,10 @@ class CheckoutController extends Controller
         if($order) {
             foreach($cart as $id=>$item) {
                 $orderItem=new OrderItem();
-                $orderItem->order_id=$order->id;
+                $orderItem->product_order_id=$order->id;
                 $orderItem->product_id=$id;
                 $orderItem->quantity=$item['quantity'];
-                $orderItem->unit_price=$item['price'];
+                $orderItem->price=$item['price'];
                 $orderItem->line_total=$item['price'] * $item['quantity'];
                 $orderItem->save();
             }
