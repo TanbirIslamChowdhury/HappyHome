@@ -170,6 +170,8 @@ The goal of this project is to develop an online service booking application whe
 Would you like me to also create a **Database Schema (ERD/DBML)** for this project so you can directly generate migrations in Laravel?
 
 
-
+prompt:
 i need some change in my erd. 
 1. i need customer and service provider in different table with their passward. user table only use for admin. 2. i need a area table and a table to calculate distance of area. if possible use google map to calculate distance (if i can use google map free or suggest me other way to calculate distance)
+prompt:
+can you please give all model with relation?

@@ -1,0 +1,220 @@
+Great clarification ✅ That makes the ERD cleaner. Let’s refactor your schema:
+
+---
+
+## 🔄 **Requested Changes**
+
+1. **Users Table → only Admins**
+
+   * `users` → only for system admins.
+   * Separate tables for **customers** and **service_providers** with their own login (email/password).
+
+2. **Area & Distance**
+
+   * Add `areas` table.
+   * Add `area_distances` table to store distances between two areas (for furniture shifting).
+   * For calculation:
+
+     * **Option A:** Use **Google Maps Distance Matrix API** (free up to **2,500 requests/day** → enough for small scale).
+     * **Option B:** Use **Haversine Formula** (calculate straight-line distance between lat/long coordinates). Free & works offline.
+     * Best practice: store `latitude` and `longitude` in `areas` table, then compute via Haversine in Laravel.
+
+---
+
+## 📌 **Updated DBML Schema**
+
+```dbml
+//////////////////////////////////////////////////////
+// Admin Users (Only Admins)
+//////////////////////////////////////////////////////
+
+Table users {
+  id int [pk, increment]
+  name varchar(100)
+  email varchar(150) [unique]
+  password varchar(255)
+  role enum('admin') [not null, default: 'admin']
+  created_at timestamp
+  updated_at timestamp
+}
+
+//////////////////////////////////////////////////////
+// Customers
+//////////////////////////////////////////////////////
+
+Table customers {
+  id int [pk, increment]
+  name varchar(100)
+  email varchar(150) [unique]
+  password varchar(255)
+  phone varchar(20)
+  address text
+  created_at timestamp
+  updated_at timestamp
+}
+
+//////////////////////////////////////////////////////
+// Service Providers
+//////////////////////////////////////////////////////
+
+Table service_providers {
+  id int [pk, increment]
+  name varchar(100)
+  email varchar(150) [unique]
+  password varchar(255)
+  phone varchar(20)
+  address text
+  created_at timestamp
+  updated_at timestamp
+}
+
+//////////////////////////////////////////////////////
+// Services (Cleaning, Plumbing, etc.)
+//////////////////////////////////////////////////////
+
+Table services {
+  id int [pk, increment]
+  name varchar(100)
+  description text
+  billing_type enum('area', 'hour', 'distance', 'sqft', 'custom')
+  created_at timestamp
+  updated_at timestamp
+}
+
+//////////////////////////////////////////////////////
+// Service Packages
+//////////////////////////////////////////////////////
+
+Table service_packages {
+  id int [pk, increment]
+  service_id int [ref: > services.id]
+  name varchar(100)
+  description text
+  base_price decimal(10,2)
+  unit_price decimal(10,2)
+  created_at timestamp
+  updated_at timestamp
+}
+
+//////////////////////////////////////////////////////
+// Areas
+//////////////////////////////////////////////////////
+
+Table areas {
+  id int [pk, increment]
+  name varchar(100)
+  latitude decimal(10,6)
+  longitude decimal(10,6)
+  created_at timestamp
+  updated_at timestamp
+}
+
+//////////////////////////////////////////////////////
+// Area Distances (Store pre-calculated distances)
+//////////////////////////////////////////////////////
+
+Table area_distances {
+  id int [pk, increment]
+  from_area_id int [ref: > areas.id]
+  to_area_id int [ref: > areas.id]
+  distance_km decimal(10,2)
+  created_at timestamp
+  updated_at timestamp
+}
+
+//////////////////////////////////////////////////////
+// Bookings
+//////////////////////////////////////////////////////
+
+Table bookings {
+  id int [pk, increment]
+  customer_id int [ref: > customers.id]
+  service_id int [ref: > services.id]
+  service_package_id int [ref: > service_packages.id]
+  provider_id int [ref: > service_providers.id] // assigned by admin
+  status enum('pending', 'accepted', 'in-progress', 'completed', 'cancelled') [default: 'pending']
+  booking_date datetime
+  total_amount decimal(10,2)
+  created_at timestamp
+  updated_at timestamp
+}
+
+//////////////////////////////////////////////////////
+// Booking Details
+//////////////////////////////////////////////////////
+
+Table booking_details {
+  id int [pk, increment]
+  booking_id int [ref: > bookings.id]
+  area_sqft int
+  hours int
+  distance_km int
+  pickup_area_id int [ref: > areas.id]
+  delivery_area_id int [ref: > areas.id]
+  pickup_floor int
+  delivery_floor int
+  notes text
+}
+
+//////////////////////////////////////////////////////
+// Feedback
+//////////////////////////////////////////////////////
+
+Table feedback {
+  id int [pk, increment]
+  booking_id int [ref: > bookings.id]
+  customer_id int [ref: > customers.id]
+  provider_id int [ref: > service_providers.id]
+  rating int
+  comments text
+  created_at timestamp
+}
+
+//////////////////////////////////////////////////////
+// Provider Ratings
+//////////////////////////////////////////////////////
+
+Table provider_ratings {
+  id int [pk, increment]
+  provider_id int [ref: > service_providers.id]
+  average_rating decimal(3,2)
+  total_reviews int
+  created_at timestamp
+  updated_at timestamp
+}
+```
+
+---
+
+## ⚡ Implementation Notes
+
+* **Authentication:**
+
+  * Customers login from `customers` table.
+  * Providers login from `service_providers` table.
+  * Admins login from `users` table.
+
+* **Distance Calculation Options:**
+
+  1. **Google Maps API** → accurate, supports traffic/time, but has limits (free tier ~ 2,500 req/day).
+  2. **Haversine Formula in MySQL**:
+
+     ```sql
+     SELECT id, name,
+       (6371 * acos(
+          cos(radians(:lat1)) *
+          cos(radians(latitude)) *
+          cos(radians(longitude) - radians(:lon1)) +
+          sin(radians(:lat1)) *
+          sin(radians(latitude))
+       )) AS distance_km
+     FROM areas
+     HAVING distance_km < 50
+     ORDER BY distance_km;
+     ```
+
+     → Works **offline**, no API cost. Best for your case.
+
+---
+
+👉 Do you want me to now **rebuild the Laravel migration files** with this new schema (separate `customers`, `service_providers`, `areas`, `area_distances`)?
