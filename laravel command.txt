@@ -26,6 +26,18 @@ authentication
 *npm install
 *npm run build
 
+permission
+*composer require spatie/laravel-permission
+*php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
+*php artisan migrate
+
+/* in user model*/
+use Spatie\Permission\Traits\HasRoles;
+
+class User extends Authenticatable
+{
+    use HasRoles;
+}
 
 
 
@@ -74,4 +86,7 @@ Route::middleware('auth:web')->group(function () {
 district divison package
 *composer require devfaysal/laravel-bangladesh-geocode
 *php artisan BangladeshGeocode:setup
+
+add to cart
+*php artisan make:controller CartController
 
