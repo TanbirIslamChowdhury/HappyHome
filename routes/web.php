@@ -1,12 +1,29 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductsController;
-use App\Http\Controllers\FronProductController;
-use App\Http\Controllers\TechniciansController;
-use App\Http\Controllers\ServiceTypesController;
-use  App\Http\Controllers\CartController;
-use  App\Http\Controllers\CheckoutController;
+
+
+use App\Http\Controllers\UserController;
+
+use App\Http\Controllers\CustomerController;
+
+use App\Http\Controllers\ServiceProviderController;
+
+use App\Http\Controllers\ServiceController;
+
+use App\Http\Controllers\ServicePackageController;
+
+use App\Http\Controllers\AreaController;
+
+use App\Http\Controllers\AreaDistanceController;
+
+use App\Http\Controllers\BookingController;
+
+use App\Http\Controllers\BookingDetailController;
+
+use App\Http\Controllers\FeedbackController;
+
+use App\Http\Controllers\ProviderRatingController;
 
 /*
 |--------------------------------------------------------------------------
