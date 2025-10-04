@@ -104,9 +104,7 @@ Auth::routes();
 
 Route::middleware('auth:web')->group(function(){
   Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
-  Route::resource('products', ProductsController::class);
-  Route::resource('technicians', TechniciansController::class);
-  Route::resource('service_types', ServiceTypesController::class);
+  Route::resource('users', UserController::class);
 
 });
 
