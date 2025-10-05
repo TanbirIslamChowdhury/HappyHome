@@ -198,35 +198,61 @@
               </a>
               <ul class="menu-sub text-primary">
                 <li class="menu-item ">
-                  <a href="{{route('products.index')}}" class="menu-link">
-                    <div data-i18n="Account" class=" text-dark">Products</div>
+                  <a href="" class="menu-link">
+                    <div data-i18n="Account" class=" text-dark">Users</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="{{route('technicians.index')}}" class="menu-link">
-                    <div data-i18n="Notifications" class=" text-info">Technicians</div>
+                  <a href="" class="menu-link">
+                    <div data-i18n="Notifications" class=" text-info">Customers</div>
                   </a>
                 </li>
                    <li class="menu-item">
-                  <a href="{{route('service_types.index')}}" class="menu-link">
-                    <div data-i18n="Notifications" class=" text-danger">Services</div>
+                  <a href="" class="menu-link">
+                    <div data-i18n="Notifications" class=" text-danger">Service Providers</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="{{route('admin_users')}}" class="menu-link">
-                    <div data-i18n="Connections" class=" text-info">Users</div>
+                  <a href="" class="menu-link">
+                    <div data-i18n="Connections" class=" text-info">Services</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="{{('admin_orders')}}" class="menu-link">
-                    <div data-i18n="Connections" class=" text-warning">Orders</div>
+                  <a href="" class="menu-link">
+                    <div data-i18n="Connections" class=" text-warning">Service Packages</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="{{('admin_bookings')}}" class="menu-link">
-                    <div data-i18n="Connections" class=" text-success">Bookings</div>
+                  <a href="" class="menu-link">
+                    <div data-i18n="Connections" class=" text-primary">Areas </div>
                   </a>
                 </li>
+                <li class="menu-item">
+                  <a href="" class="menu-link">
+                    <div data-i18n="Connections" class=" text-primary">Area Distances </div>
+                  </a>
+                </li>
+                 <li class="menu-item">
+                  <a href="" class="menu-link">
+                    <div data-i18n="Connections" class=" text-primary"> Bookings </div>
+                  </a>
+                </li>
+                 <li class="menu-item">
+                  <a href="" class="menu-link">
+                    <div data-i18n="Connections" class=" text-primary"> Booking Details </div>
+                  </a>
+                </li>
+                 <li class="menu-item">
+                  <a href="" class="menu-link">
+                    <div data-i18n="Connections" class=" text-primary"> Feedbacks </div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="" class="menu-link">
+                    <div data-i18n="Connections" class=" text-primary">Provider Ratings</div>
+                  </a>
+                </li>
+
               </ul>
             </li>
             {{-- <li class="menu-item">

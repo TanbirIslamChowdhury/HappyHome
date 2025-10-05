@@ -14,7 +14,8 @@ class UserController extends Controller
     public function index()
     {
         $admins = User::where('role', 'admin')->get();
-        return response()->json($admins);
+        //return response()->json($admins);
+        return view('admin', compact('admins'));
     }
 
     /**

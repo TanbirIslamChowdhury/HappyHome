@@ -60,7 +60,7 @@ Route::get('/contact', function () {
 })->name('contact');
 
 
-Route::get('frontProduct',[FronProductController::class,'products'])->name ('products');
+
 
 // Route::get('/front_products',function(){
 //     return view('products');
@@ -68,23 +68,12 @@ Route::get('frontProduct',[FronProductController::class,'products'])->name ('pro
 
 //admin routes
 
-Route::get('/admin_orders', function () {
-     return view('admin_orders');
- })->name('admin_orders');
 
 
 
- Route::get('/admin_bookings', function () {
-     return view('admin_bookings');
- })->name('admin_bookings');
 
 
-Route::get('cart',[CartController::class,'viewCart'])->name('cart.view');
-Route::post('cart/add',[CartController::class,'addToCart'])->name('cart.add');
-Route::post('cart/update',[CartController::class,'updateCart'])->name('cart.update');
-Route::get('cart/remove/{id}',[CartController::class,'removeFromCart'])->name('cart.remove');
-Route::get('checkout',[CheckoutController::class,'checkout'])->name('checkout');
-Route::post('checkout/place_order',[CheckoutController::class,'placeOrder'])->name('checkout.place_order');
+
 
 
 
@@ -94,18 +83,24 @@ Route::post('checkout/place_order',[CheckoutController::class,'placeOrder'])->na
 
 
 
- Route::get('/admin_users', function () {
-     return view('admin_users');
- })->name('admin_users');
+//  Route::get('/admin_users', function () {
+//      return view('admin_users');
+//  })->name('admin_users');
 
 
 
 Auth::routes();
 
-Route::middleware('auth:web')->group(function(){
-  Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
+Route::middleware(['auth'])->group(function(){
+  Route::get('/admin', [App\Http\Controllers\UserController::class, 'index'])->name('admin');
   Route::resource('users', UserController::class);
 
 });
 
+
+
+
+// Route::middleware(['auth'])->group(function () {
+//     Route::resource('users', UserController::class);
+// });
 
