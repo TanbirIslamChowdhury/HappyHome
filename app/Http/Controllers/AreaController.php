@@ -15,7 +15,12 @@ class AreaController extends Controller
     public function index()
     {
         $areas = Area::all();
-        return response()->json($areas);
+        return view('area.index', compact('areas'));
+    }
+
+    public function create()
+    {
+        return view('area.create');
     }
 
     /**
@@ -37,10 +42,7 @@ class AreaController extends Controller
             'is_active'  => $request->is_active ?? true,
         ]);
 
-        return response()->json([
-            'message' => 'Area created successfully',
-            'area'    => $area,
-        ], 201);
+       return redirect()->route('area.index')->with('success', 'Area created successfully');
     }
 
     /**
@@ -50,6 +52,12 @@ class AreaController extends Controller
     {
         $area = Area::findOrFail($id);
         return response()->json($area);
+    }
+
+    public function edit($id)
+    {
+        $area = Area::findOrFail($id);
+        return view('area.edit', compact('area'));
     }
 
     /**
@@ -68,10 +76,7 @@ class AreaController extends Controller
 
         $area->update($request->all());
 
-        return response()->json([
-            'message' => 'Area updated successfully',
-            'area'    => $area,
-        ]);
+        return redirect()->route('area.index')->with('success', 'Area updated successfully');
     }
 
     /**
@@ -82,94 +87,7 @@ class AreaController extends Controller
         $area = Area::findOrFail($id);
         $area->delete();
 
-        return response()->json(['message' => 'Area deleted successfully']);
+       return redirect()->route('area.index')->with('success', 'Area deleted successfully');
     }
 
-    /**
-     * Toggle area active/inactive status.
-     */
-    public function toggleStatus($id)
-    {
-        $area = Area::findOrFail($id);
-        $area->is_active = !$area->is_active;
-        $area->save();
-
-        return response()->json([
-            'message' => 'Area status updated successfully',
-            'area'    => $area,
-        ]);
-    }
-
-    /**
-     * Calculate and store the distance between two areas.
-     * Optionally uses Google Maps Distance Matrix API.
-     */
-    public function calculateDistance(Request $request)
-    {
-        $request->validate([
-            'from_area_id' => 'required|exists:areas,id',
-            'to_area_id'   => 'required|exists:areas,id',
-        ]);
-
-        $from = Area::findOrFail($request->from_area_id);
-        $to   = Area::findOrFail($request->to_area_id);
-
-        // Check if already stored in DB
-        $existing = AreaDistance::where('from_area_id', $from->id)
-            ->where('to_area_id', $to->id)
-            ->first();
-
-        if ($existing) {
-            return response()->json([
-                'message'  => 'Distance fetched from database cache',
-                'distance' => $existing->distance_km,
-            ]);
-        }
-
-        $distanceKm = $this->calculateDistanceInKm($from->latitude, $from->longitude, $to->latitude, $to->longitude);
-
-        // Save it to DB for next time
-        AreaDistance::create([
-            'from_area_id' => $from->id,
-            'to_area_id'   => $to->id,
-            'distance_km'  => $distanceKm,
-        ]);
-
-        return response()->json([
-            'message'  => 'Distance calculated successfully',
-            'distance' => $distanceKm,
-        ]);
-    }
-
-    /**
-     * Utility: Calculate distance (fallback or Google Maps if configured).
-     */
-    private function calculateDistanceInKm($lat1, $lon1, $lat2, $lon2)
-    {
-        // 🔹 If you have a Google Maps API key in .env:
-        // GOOGLE_MAPS_API_KEY=your_key_here
-        $apiKey = env('GOOGLE_MAPS_API_KEY');
-
-        if ($apiKey) {
-            $url = "https://maps.googleapis.com/maps/api/distancematrix/json";
-            $response = Http::get($url, [
-                'origins'      => "$lat1,$lon1",
-                'destinations' => "$lat2,$lon2",
-                'key'          => $apiKey,
-            ]);
-
-            if ($response->successful() && isset($response['rows'][0]['elements'][0]['distance']['value'])) {
-                // Google returns meters
-                return round($response['rows'][0]['elements'][0]['distance']['value'] / 1000, 2);
-            }
-        }
-
-        // 🔹 Fallback: Haversine formula (no API cost)
-        $earthRadius = 6371; // in km
-        $dLat = deg2rad($lat2 - $lat1);
-        $dLon = deg2rad($lon2 - $lon1);
-        $a = sin($dLat / 2) ** 2 + cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * sin($dLon / 2) ** 2;
-        $c = 2 * asin(sqrt($a));
-        return round($earthRadius * $c, 2);
-    }
 }

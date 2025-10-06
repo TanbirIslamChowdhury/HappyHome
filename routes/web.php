@@ -92,8 +92,20 @@ Route::get('/contact', function () {
 Auth::routes();
 
 Route::middleware(['auth'])->group(function(){
+    Route::resource('user', UserController::class);
+    Route::resource('customer', CustomerController::class);
+    Route::resource('service_provider', ServiceProviderController::class);
+    Route::resource('service', ServiceController::class);
+    Route::resource('service_package', ServicePackageController::class);
+    Route::resource('area', AreaController::class);
+    Route::resource('area_distance', AreaDistanceController::class);
+    Route::resource('booking', BookingController::class);
+    Route::resource('booking_detail', BookingDetailController::class);
+    Route::resource('feedback', FeedbackController::class);
+    Route::resource('provider_rating', ProviderRatingController::class);
   Route::get('/admin', [App\Http\Controllers\UserController::class, 'index'])->name('admin');
-  Route::resource('users', UserController::class);
+//  Route::get('/customers', [App\Http\Controllers\CustomerController::class, 'index'])->name('customers');
+//   Route::resource('users', UserController::class);
 
 });
 
