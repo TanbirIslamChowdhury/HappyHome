@@ -1,0 +1,177 @@
+chat gpt link:https://chatgpt.com/share/68da1b42-9b38-8006-b7b1-d8b794166063
+
+chat gpt prompt for my project
+
+
+i want to make a application with laravel backend and mysql frontend. my user will book various service like cleaning, plumbing, electrician, house furniture shifting, home painting and carpenter. Every service will have different package and to book any service customer should be login. Customer will book any package and they will be provide some booking information. 
+1. Cleaning: they will be billed according to their home area
+2. Plumbing: they will be billed according to hour
+3. Electrician: they will be billed according to hour
+4. house furniture shifting: they will be billed according to distance, floor number from where they will pick and  floor number from where they will deliver
+5. home painting: they will be billed according to squire feet.
+6. Carpenter: they will be billed according to hour.
+after booking admin will accept the booking and assign to a service provider person. Service providers will have a panel to see their assigned service. They can see customer details and also can change the status of booking like completed or cancel. Service provider also can change the booking as if hour and any other service parameter change when servicing. Customer will also have a panel to show their service status and they can give feedback after completing the service. Customer feedback will be show the rank of service provider. Can you provide me a BRD
+ 
+
+
+
+gpt response:
+
+
+Got it ✅
+You’re basically describing an **On-demand Service Booking Platform** (like UrbanClap/Handy but simplified). Let me write you a **Business Requirements Document (BRD)** for this system, structured clearly.
+
+---
+
+# **Business Requirements Document (BRD)**
+
+**Project Name:** Home Service Booking Application
+**Technology Stack:** Laravel (Backend), MySQL (Database), Web-based Frontend
+
+---
+
+## **1. Introduction**
+
+The goal of this project is to develop an online service booking application where customers can book different types of home-related services (cleaning, plumbing, electrician, furniture shifting, painting, carpentry). Each service has its own billing model. Customers must register/login before booking. Admin and service providers will have their own portals to manage bookings.
+
+---
+
+## **2. Objectives**
+
+* Provide customers with an easy way to book home services.
+* Manage service packages with dynamic pricing models.
+* Allow admins to assign bookings to service providers.
+* Enable service providers to manage and update assigned jobs.
+* Collect customer feedback to rate service providers.
+* Ensure real-time status updates on bookings.
+
+---
+
+## **3. User Roles**
+
+1. **Customer**
+
+   * Register/Login/Logout
+   * Browse available services & packages
+   * Book a service (with required inputs depending on service type)
+   * View booking status (Pending, Accepted, In-progress, Completed, Cancelled)
+   * Give feedback/rating after completion
+
+2. **Admin**
+
+   * Manage services & packages (CRUD)
+   * Manage customers and service providers
+   * Approve/Reject bookings
+   * Assign service providers to accepted bookings
+   * Monitor service status updates
+   * View reports (services booked, revenue, provider ratings, etc.)
+
+3. **Service Provider**
+
+   * Login/Logout
+   * View assigned bookings
+   * Update booking status (In-progress, Completed, Cancelled)
+   * Modify billing if parameters change (extra hours, extra area, etc.)
+   * View feedback and rating
+
+---
+
+## **4. Services and Billing Rules**
+
+1. **Cleaning** → Billed by **Home Area (sq. ft.)**
+2. **Plumbing** → Billed by **Hour**
+3. **Electrician** → Billed by **Hour**
+4. **Furniture Shifting** → Billed by **Distance (km) + Pickup Floor + Delivery Floor**
+5. **Painting** → Billed by **Square Feet**
+6. **Carpentry** → Billed by **Hour**
+
+---
+
+## **5. Functional Requirements**
+
+### 5.1 Customer Functions
+
+* User registration and authentication
+* Profile management
+* Service search and booking
+* Dynamic booking form (inputs vary by service type)
+* View booking status
+* Payment simulation (can be COD or later integration with gateway)
+* Feedback & ratings
+
+### 5.2 Admin Functions
+
+* Login and authentication
+* Dashboard (bookings, revenue, active providers, etc.)
+* Manage services and pricing rules
+* Manage providers (add/edit/remove)
+* Assign bookings to providers
+* Approve/Reject bookings
+
+### 5.3 Service Provider Functions
+
+* Login and authentication
+* Dashboard (new bookings, assigned bookings, history)
+* Update booking status (In-progress, Completed, Cancelled)
+* Modify service parameters if required (e.g., extra time)
+* View feedback and ratings
+
+---
+
+## **6. Non-Functional Requirements**
+
+* **Security:** Secure authentication with Laravel Auth, CSRF protection.
+* **Scalability:** Support for multiple service categories and providers.
+* **Performance:** Quick booking and status update processing.
+* **Usability:** Mobile-friendly responsive frontend.
+
+---
+
+## **7. Booking Lifecycle**
+
+1. Customer selects a service & package → submits booking details
+2. Booking created with status **Pending**
+3. Admin reviews & assigns provider → status becomes **Accepted**
+4. Provider starts service → status becomes **In-progress**
+5. Provider completes service → status becomes **Completed**
+6. Customer leaves feedback & rating
+7. Admin monitors provider performance
+
+---
+
+## **8. Feedback and Ranking**
+
+* After service completion, customer gives **star rating (1–5) + comment**
+* Provider’s overall rank is calculated as an average of all ratings
+* Higher-ranked providers appear first in future assignments (optional feature)
+
+---
+
+## **9. Reports (Admin)**
+
+* Service-wise bookings & revenue
+* Provider performance (ratings, number of bookings completed)
+* Customer activity (number of bookings, cancellations)
+* Pending vs Completed vs Cancelled bookings
+
+---
+
+## **10. Future Enhancements**
+
+* Online payment gateway integration
+* Push notifications (SMS/Email) for status updates
+* Mobile App version (Flutter/React Native)
+* AI-based provider assignment
+
+---
+
+✅ This BRD covers **business goals, roles, functional/non-functional requirements, billing rules, booking flow, and future plans**.
+
+Would you like me to also create a **Database Schema (ERD/DBML)** for this project so you can directly generate migrations in Laravel?
+
+
+prompt:
+i need some change in my erd. 
+1. i need customer and service provider in different table with their passward. user table only use for admin. 2. i need a area table and a table to calculate distance of area. if possible use google map to calculate distance (if i can use google map free or suggest me other way to calculate distance)
+prompt:
+can you please give all model with relation?

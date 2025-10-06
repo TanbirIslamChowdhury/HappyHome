@@ -7,6 +7,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
+   <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Favicon -->
     <link href="{{asset('assets/img/favicon.ico')}}" rel="icon">
@@ -95,7 +96,11 @@
                         </div>
                     </div>
                     <a href="{{route('contact')}}" class="nav-item nav-link">Contact</a>
-                    <a href="{{route('front_products')}}" class="nav-item nav-link">Products</a>
+
+{{-- 
+                    <a href="{{route('products')}}" class="nav-item nav-link">Products</a> --}}
+
+                    {{-- <a href="{{route('cart.view')}}" class="nav-item nav-link ">Cart </a> --}}
                 </div>
                 <div class="mt-4 mt-lg-0 me-lg-n4 py-3 px-4 bg-primary d-flex align-items-center">
                     <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-white" style="width: 45px; height: 45px;">
@@ -196,6 +201,8 @@
 
     <!-- Template Javascript -->
     <script src="{{asset('assets/js/main.js')}}"></script>
+    
+    @stack('scripts')
 </body>
 
 </html>

@@ -53,11 +53,17 @@
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="{{asset('admin_assets/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css')}}" />
 
+ <link rel="stylesheet" href="{{asset('admin_assets/assets/css/bootstrap.min.css')}}" />
+  
+
     <link rel="stylesheet" href="{{asset('admin_assets/assets/vendor/libs/apex-charts/apex-charts.css')}}" />
 
+    <link rel="stylesheet" href="{{asset('admin_assets/assets/vendor/libs/apex-charts/apex-charts.css')}}" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Page CSS -->
 
     <!-- Helpers -->
+
     <script src="{{asset('admin_assets/assets/vendor/js/helpers.js')}}"></script>
 
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
@@ -129,7 +135,7 @@
                   </g>
                 </svg>
               </span>
-              <span class="app-brand-text demo menu-text fw-bolder ms-2">Happy Home</span>
+              <span class="app-brand-text demo menu-text fw-bolder ms-2 h3 text-primary">Happy Home</span>
             </a>
 
             <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -144,7 +150,7 @@
             <li class="menu-item active">
               <a href="{{route('admin')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Dashboard</div>
+                <div data-i18n="Analytics" >Dashboard</div>
               </a>
             </li>
 
@@ -188,34 +194,65 @@
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                <div data-i18n="Account Settings">Pages</div>
+                <div data-i18n="Account Settings" class=" text-primary fw-bold ">Pages</div>
               </a>
-              <ul class="menu-sub">
+              <ul class="menu-sub text-primary">
+                {{-- <li class="menu-item ">
+                  <a href="" class="menu-link">
+                    <div data-i18n="Account" class=" text-info fw-bold">Users</div>
+                  </a>
+                </li> --}}
                 <li class="menu-item">
-                  <a href="{{route('products.index')}}" class="menu-link">
-                    <div data-i18n="Account">Products</div>
+                  <a href="" class="menu-link">
+                    <div data-i18n="Notifications" class="fw-bold text-info">Customers</div>
+                  </a>
+                </li>
+                   <li class="menu-item">
+                  <a href="" class="menu-link">
+                    <div data-i18n="Notifications" class=" text-info fw-bold ">Service Providers</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="{{route('admin_technicians')}}" class="menu-link">
-                    <div data-i18n="Notifications">Technicians</div>
+                  <a href="" class="menu-link">
+                    <div data-i18n="Connections" class=" text-info fw-bold  ">Services</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="{{route('admin_users')}}" class="menu-link">
-                    <div data-i18n="Connections">Users</div>
+                  <a href="" class="menu-link">
+                    <div data-i18n="Connections" class=" text-info fw-bold ">Service Packages</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="{{('admin_orders')}}" class="menu-link">
-                    <div data-i18n="Connections">Orders</div>
+                  <a href="" class="menu-link">
+                    <div data-i18n="Connections" class=" text-primary fw-bold ">Areas </div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="{{('admin_bookings')}}" class="menu-link">
-                    <div data-i18n="Connections">Bookings</div>
+                  <a href="" class="menu-link">
+                    <div data-i18n="Connections" class=" text-primary fw-bold ">Area Distances </div>
                   </a>
                 </li>
+                 <li class="menu-item">
+                  <a href="" class="menu-link">
+                    <div data-i18n="Connections" class=" text-primary fw-bold "> Bookings </div>
+                  </a>
+                </li>
+                 <li class="menu-item">
+                  <a href="" class="menu-link">
+                    <div data-i18n="Connections" class=" text-primary fw-bold "> Booking Details </div>
+                  </a>
+                </li>
+                 <li class="menu-item">
+                  <a href="" class="menu-link">
+                    <div data-i18n="Connections" class=" text-primary fw-bold "> Feedbacks </div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="" class="menu-link">
+                    <div data-i18n="Connections" class=" text-primary fw-bold ">Provider Ratings</div>
+                  </a>
+                </li>
+
               </ul>
             </li>
             {{-- <li class="menu-item">
@@ -476,7 +513,7 @@
         <div class="layout-page">
           <!-- Navbar -->
 
-          <nav
+          <nav style="width: 100%"
             class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
             id="layout-navbar"
           >
@@ -666,3 +703,4 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
   </body>
 </html>
+
