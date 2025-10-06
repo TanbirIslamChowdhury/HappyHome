@@ -135,7 +135,7 @@
                   </g>
                 </svg>
               </span>
-              <span class="app-brand-text demo menu-text fw-bolder ms-2  text-primary">Happy Home</span>
+              <span class="app-brand-text demo menu-text fw-bolder ms-2 h3 text-primary">Happy Home</span>
             </a>
 
             <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -194,62 +194,62 @@
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                <div data-i18n="Account Settings" class=" text-primary">Pages</div>
+                <div data-i18n="Account Settings" class=" text-primary fw-bold ">Pages</div>
               </a>
               <ul class="menu-sub text-primary">
-                <li class="menu-item ">
+                {{-- <li class="menu-item ">
                   <a href="" class="menu-link">
-                    <div data-i18n="Account" class=" text-dark">Users</div>
+                    <div data-i18n="Account" class=" text-info fw-bold">Users</div>
                   </a>
-                </li>
+                </li> --}}
                 <li class="menu-item">
                   <a href="" class="menu-link">
-                    <div data-i18n="Notifications" class=" text-info">Customers</div>
+                    <div data-i18n="Notifications" class="fw-bold text-info">Customers</div>
                   </a>
                 </li>
                    <li class="menu-item">
                   <a href="" class="menu-link">
-                    <div data-i18n="Notifications" class=" text-danger">Service Providers</div>
+                    <div data-i18n="Notifications" class=" text-info fw-bold ">Service Providers</div>
                   </a>
                 </li>
                 <li class="menu-item">
                   <a href="" class="menu-link">
-                    <div data-i18n="Connections" class=" text-info">Services</div>
+                    <div data-i18n="Connections" class=" text-info fw-bold  ">Services</div>
                   </a>
                 </li>
                 <li class="menu-item">
                   <a href="" class="menu-link">
-                    <div data-i18n="Connections" class=" text-warning">Service Packages</div>
+                    <div data-i18n="Connections" class=" text-info fw-bold ">Service Packages</div>
                   </a>
                 </li>
                 <li class="menu-item">
                   <a href="" class="menu-link">
-                    <div data-i18n="Connections" class=" text-primary">Areas </div>
+                    <div data-i18n="Connections" class=" text-primary fw-bold ">Areas </div>
                   </a>
                 </li>
                 <li class="menu-item">
                   <a href="" class="menu-link">
-                    <div data-i18n="Connections" class=" text-primary">Area Distances </div>
+                    <div data-i18n="Connections" class=" text-primary fw-bold ">Area Distances </div>
                   </a>
                 </li>
                  <li class="menu-item">
                   <a href="" class="menu-link">
-                    <div data-i18n="Connections" class=" text-primary"> Bookings </div>
+                    <div data-i18n="Connections" class=" text-primary fw-bold "> Bookings </div>
                   </a>
                 </li>
                  <li class="menu-item">
                   <a href="" class="menu-link">
-                    <div data-i18n="Connections" class=" text-primary"> Booking Details </div>
+                    <div data-i18n="Connections" class=" text-primary fw-bold "> Booking Details </div>
                   </a>
                 </li>
                  <li class="menu-item">
                   <a href="" class="menu-link">
-                    <div data-i18n="Connections" class=" text-primary"> Feedbacks </div>
+                    <div data-i18n="Connections" class=" text-primary fw-bold "> Feedbacks </div>
                   </a>
                 </li>
                 <li class="menu-item">
                   <a href="" class="menu-link">
-                    <div data-i18n="Connections" class=" text-primary">Provider Ratings</div>
+                    <div data-i18n="Connections" class=" text-primary fw-bold ">Provider Ratings</div>
                   </a>
                 </li>
 
