@@ -15,8 +15,12 @@ class CustomerController extends Controller
     public function index()
     {
         $customers = Customer::all();
-        //return response()->json($customers);
-         return view('customers.index', compact('customers'));
+        return view('customer.index', compact('customers'));
+    }
+
+    public function create()
+    {
+        return view('customer.create');
     }
 
     /**
@@ -26,10 +30,10 @@ class CustomerController extends Controller
     {
         $request->validate([
             'name'     => 'required|string|max:255',
-            'email'    => 'required|string|email|unique:customers,email',
+            'email'    => 'required|string|email|max:255|unique:customers,email',
             'password' => 'required|string|min:6|confirmed',
-            'phone'    => 'required|string|max:20',
-            'address'  => 'required|string|max:255',
+            'phone'    => 'nullable|string|max:20',
+            'address'  => 'nullable|string|max:255',
         ]);
 
         $customer = Customer::create([
@@ -40,7 +44,7 @@ class CustomerController extends Controller
             'address'  => $request->address,
         ]);
 
-        return response()->json(['message' => 'Customer registered successfully', 'customer' => $customer], 201);
+        return redirect()->route('customer.index')->with('success', 'Customer created successfully');
     }
 
     /**
@@ -60,22 +64,23 @@ class CustomerController extends Controller
         $customer = Customer::findOrFail($id);
 
         $request->validate([
-            'name'     => 'sometimes|string|max:255',
-            'email'    => 'sometimes|string|email|unique:customers,email,' . $customer->id,
+            'name'     => 'required|string|max:255',
+            'email'    => 'required|string|email|max:255|unique:customers,email,' . $customer->id,
             'password' => 'nullable|string|min:6|confirmed',
-            'phone'    => 'sometimes|string|max:20',
-            'address'  => 'sometimes|string|max:255',
+            'phone'    => 'nullable|string|max:20',
+            'address'  => 'nullable|string|max:255',
         ]);
 
-        $customer->fill($request->only(['name', 'email', 'phone', 'address']));
-
+        $customer->name = $request->name;
+        $customer->email = $request->email;
         if ($request->filled('password')) {
             $customer->password = Hash::make($request->password);
         }
-
+        $customer->phone = $request->phone;
+        $customer->address = $request->address;
         $customer->save();
 
-        return response()->json(['message' => 'Customer updated successfully', 'customer' => $customer]);
+        return redirect()->route('customer.index')->with('success', 'Customer updated successfully');
     }
 
     /**
@@ -86,41 +91,11 @@ class CustomerController extends Controller
         $customer = Customer::findOrFail($id);
         $customer->delete();
 
-        return response()->json(['message' => 'Customer deleted successfully']);
+        return redirect()->route('customer.index')->with('success', 'Customer deleted successfully');
     }
 
     /**
      * Customer login.
      */
-    public function login(Request $request)
-    {
-        $request->validate([
-            'email'    => 'required|email',
-            'password' => 'required|string',
-        ]);
 
-        $customer = Customer::where('email', $request->email)->first();
-
-        if (!$customer || !Hash::check($request->password, $customer->password)) {
-            return response()->json(['message' => 'Invalid credentials'], 401);
-        }
-
-        // If using Laravel Sanctum or Passport, you can generate token:
-        $token = $customer->createToken('CustomerAuthToken')->plainTextToken;
-
-        return response()->json([
-            'message'  => 'Login successful',
-            'token'    => $token,
-            'customer' => $customer,
-        ]);
-    }
-
-    /**
-     * Customer logout.
-     */
-    public function logout(Request $request)
-    {
-        $request->user()->currentAccessToken()->delete();
-        return response()->json(['message' => 'Logged out successfully']);
-    }
 }
