@@ -31,7 +31,7 @@ class CustomerController extends Controller
         $request->validate([
             'name'     => 'required|string|max:255',
             'email'    => 'required|string|email|max:255|unique:customers,email',
-            'password' => 'required|string|min:6|confirmed',
+            'password' => 'required|string|min:6',
             'phone'    => 'nullable|string|max:20',
             'address'  => 'nullable|string|max:255',
         ]);
@@ -39,7 +39,7 @@ class CustomerController extends Controller
         $customer = Customer::create([
             'name'     => $request->name,
             'email'    => $request->email,
-            'password' => Hash::make($request->password),
+            'password' => $request->password,
             'phone'    => $request->phone,
             'address'  => $request->address,
         ]);
@@ -55,6 +55,11 @@ class CustomerController extends Controller
         $customer = Customer::findOrFail($id);
         return response()->json($customer);
     }
+     public function edit($id)
+    {
+        $customer = Customer::findOrFail($id);
+        return view('customer.edit', compact('customer'));
+    }
 
     /**
      * Update customer profile.
@@ -66,19 +71,12 @@ class CustomerController extends Controller
         $request->validate([
             'name'     => 'required|string|max:255',
             'email'    => 'required|string|email|max:255|unique:customers,email,' . $customer->id,
-            'password' => 'nullable|string|min:6|confirmed',
+            'password' => 'nullable|string|min:6',
             'phone'    => 'nullable|string|max:20',
             'address'  => 'nullable|string|max:255',
         ]);
 
-        $customer->name = $request->name;
-        $customer->email = $request->email;
-        if ($request->filled('password')) {
-            $customer->password = Hash::make($request->password);
-        }
-        $customer->phone = $request->phone;
-        $customer->address = $request->address;
-        $customer->save();
+        $customer->update($request->all());
 
         return redirect()->route('customer.index')->with('success', 'Customer updated successfully');
     }

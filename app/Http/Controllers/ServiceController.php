@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Service;
@@ -12,10 +11,13 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $services = Service::with('packages')->get();
-        return response()->json($services);
+            $service = Service::all();
+        return view('service.index', compact('service'));
     }
-
+    public function create()
+    {
+        return view('service.create');
+    }
     /**
      * Store a newly created service.
      */
@@ -33,10 +35,7 @@ class ServiceController extends Controller
             'is_active'   => $request->is_active ?? true,
         ]);
 
-        return response()->json([
-            'message' => 'Service created successfully',
-            'service' => $service,
-        ], 201);
+        return redirect()->route('service.index')->with('success', 'Service created successfully');
     }
 
     /**
@@ -47,7 +46,11 @@ class ServiceController extends Controller
         $service = Service::with('packages')->findOrFail($id);
         return response()->json($service);
     }
-
+    public function edit($id)
+    {
+        $service = Service::findOrFail($id);
+        return view('service.edit', compact('service'));
+    }
     /**
      * Update the specified service.
      */
@@ -61,16 +64,9 @@ class ServiceController extends Controller
             'is_active'   => 'boolean',
         ]);
 
-        $service->update([
-            'name'        => $request->name ?? $service->name,
-            'description' => $request->description ?? $service->description,
-            'is_active'   => $request->is_active ?? $service->is_active,
-        ]);
+        $service->update($request->all());
 
-        return response()->json([
-            'message' => 'Service updated successfully',
-            'service' => $service,
-        ]);
+        return redirect()->route('service.index')->with('success', 'Service updated successfully');
     }
 
     /**
@@ -81,21 +77,11 @@ class ServiceController extends Controller
         $service = Service::findOrFail($id);
         $service->delete();
 
-        return response()->json(['message' => 'Service deleted successfully']);
+        return  redirect()->route('service.index')->with('success', 'Service deleted successfully');
     }
+}
 
     /**
      * Toggle service active/inactive status.
      */
-    public function toggleStatus($id)
-    {
-        $service = Service::findOrFail($id);
-        $service->is_active = !$service->is_active;
-        $service->save();
-
-        return response()->json([
-            'message' => 'Service status updated successfully',
-            'service' => $service,
-        ]);
-    }
-}
+   

@@ -7,7 +7,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="card">
-        <h5 class="card-header"><a href="{{ route('service_provider.create') }}" class="btn btn-primary m-3">Add New Service Provider</a></h5>
+        <h5 class="card-header"><a href="{{ route('service_provider.create') }}" class="btn btn-primary m-3">Add New Provider</a></h5>
         
         <div class="table-responsive text-nowrap">
           <table class="table">
@@ -23,7 +23,7 @@
               </tr>
             </thead>
             <tbody class="table-border-bottom-0">
-              @forelse ($service_providers as $data)
+              @forelse ($providers as $data)
               <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $data->name }}</td>

@@ -8,7 +8,7 @@
         <div class="col-md-12">
             <div class="card mb-4">
                 <div class="card-body">
-                    <form method="post" action="{{route('service_provider.update',$service_provider->id)}}">
+                    <form method="post" action="{{route('service_provider.update',$providers->id)}}">
                         @csrf
                         @method('PATCH')
                         <div class="row">
@@ -20,7 +20,7 @@
                                     id="name"
                                     placeholder="service_provider Name"
                                     name="name"
-                                    value="{{old('name',$service_provider->name)}}"
+                                    value="{{old('name',$providers->name)}}"
                                 />
                                 @error('name')
                                     <div class="text-danger">{{ $message }}</div>
@@ -34,11 +34,12 @@
                                         id="email"
                                         placeholder="email"
                                         name="email"
-                                        value="{{old('email',$service_provider->email)}}"
+                                        value="{{old('email',$providers->email)}}"
                                     />
                                     @error('email')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
+                                </div>
                             <div class="col-sm-6">
                                 <label for="password" class="form-label">Password</label>
                                 <input
@@ -47,7 +48,7 @@
                                     id="password"
                                     placeholder="password"
                                     name="password"
-                                    value="{{old('password',$service_provider->password)}}"
+                                    value="{{old('password',$providers->password)}}"
                                 />
                                 @error('password')
                                     <div class="text-danger">{{ $message }}</div>
@@ -61,7 +62,7 @@
                                     id="phone"
                                     placeholder="phone"
                                     name="phone"
-                                    value="{{old('phone',$service_provider->phone)}}"
+                                    value="{{old('phone',$providers->phone)}}"
                                 />
                                 @error('phone')
                                     <div class="text-danger">{{ $message }}</div>
@@ -75,7 +76,7 @@
                                     id="address"
                                     placeholder="address"
                                     name="address"
-                                    value="{{old('address',$service_provider->address)}}"
+                                    value="{{old('address',$providers->address)}}"
                                 />
                                 @error('address')
                                     <div class="text-danger">{{ $message }}</div>

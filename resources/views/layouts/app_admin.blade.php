@@ -208,12 +208,12 @@
                   </a>
                 </li>
                    <li class="menu-item">
-                  <a href="" class="menu-link">
+                  <a href="{{route('service_provider.index')}}" class="menu-link">
                     <div data-i18n="Notifications" class=" text-info ">Service Providers</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="" class="menu-link">
+                  <a href=" {{route('service.index')}}" class="menu-link">
                     <div data-i18n="Connections" class=" text-info ">Services</div>
                   </a>
                 </li>
