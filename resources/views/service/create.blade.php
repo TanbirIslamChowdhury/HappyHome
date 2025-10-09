@@ -7,7 +7,7 @@
         <div class="col-md-12">
             <div class="card mb-4">
                 <div class="card-body">
-                    <form action="{{ route('service.store') }}" method="POST">
+                <form action="{{ route('service.store') }}" method="POST">
                         @csrf
                         <div class="mb-3">
                             <label for="name" class="form-label">Service Name</label>
@@ -26,8 +26,12 @@
                                 <option value="sqft">Square Feet</option>
                                 <option value="custom">Custom</option>
                             </select>
+                            
 
-                </div>
+                        </div>
+
+                            <button type="submit" class="btn btn-primary">Create Service</button>
+                    </form>
             </div>
         </div>
     </div>

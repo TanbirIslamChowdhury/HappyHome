@@ -31,6 +31,8 @@
                             </select>
                             
                 </div>
+                            <button type="submit" class="btn btn-primary">Update Service</button>
+                    </form>
             </div>
         </div>
     </div>

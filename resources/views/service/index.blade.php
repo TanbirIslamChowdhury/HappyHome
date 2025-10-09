@@ -1,12 +1,3 @@
-Table services {
-  id int [pk, increment]
-  name varchar(100)
-  description text
-  billing_type enum('area', 'hour', 'distance', 'sqft', 'custom')
-  created_at timestamp
-  updated_at timestamp
-}
-
 @extends('layouts.app_admin')
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
@@ -24,7 +15,9 @@ Table services {
                 <th>ID</th>
                 <th>Name</th>
                 <th>Description</th>
+                <th>Billing Type</th>
                 <th>Actions</th>
+                
               </tr>
             </thead>
             <tbody class="table-border-bottom-0">
@@ -33,9 +26,10 @@ Table services {
                 <td>{{ $service->id }}</td>
                 <td>{{ $service->name }}</td>
                 <td>{{ $service->description }}</td>
+                <td>{{ $service->billing_type }}</td>
               
                 <td>
-                  <a href="{{ route('service.edit', $service->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                  <a href="{{ route('service.edit', $service->id) }}" class="btn btn-sm btn-info">Edit</a>
                   <form action="{{ route('service.destroy', $service->id) }}" method="POST" style="display:inline;">
                     @csrf
                     @method('DELETE')

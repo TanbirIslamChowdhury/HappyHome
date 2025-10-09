@@ -34,13 +34,13 @@
                 <td>
                  
                       <a class="btn btn-info" href="{{ route('customer.edit', $data->id) }}"
-                        ><i class="bx bx-edit-alt me-1"></i> Edit</a
+                        ><i class=""></i> Edit</a
                       >
                       <form action="{{ route('customer.destroy', $data->id) }}" method="POST" style="display: inline;">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this customer?');">
-                          <i class="bx bx-trash me-1"></i> Delete
+                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this customer?');">
+                          <i class=""></i> Delete
                         </button>
                       </form>
                     
