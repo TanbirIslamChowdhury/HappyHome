@@ -13,9 +13,15 @@ class ServicePackageController extends Controller
      */
     public function index()
     {
-        $packages = ServicePackage::with('service')->latest()->get();
-        return response()->json($packages);
+        $packages = ServicePackage::with('service')->get();
+        return view('service_package.index', compact('packages'));
     }
+    public function create()
+    {
+        $services = Service::all();
+        return view('service_package.create', compact('services'));
+    }
+
 
     /**
      * Store a newly created service package.
@@ -46,11 +52,9 @@ class ServicePackageController extends Controller
             'is_active'   => $request->is_active ?? true,
         ]);
 
-        return response()->json([
-            'message' => 'Service package created successfully',
-            'package' => $package,
-        ], 201);
+        return redirect()->route('service_package.index')->with('success', 'Service package created successfully');
     }
+
 
     /**
      * Display the specified service package.
@@ -58,8 +62,16 @@ class ServicePackageController extends Controller
     public function show($id)
     {
         $package = ServicePackage::with('service')->findOrFail($id);
-        return response()->json($package);
+       
     }
+
+    public function edit($id)
+    {
+        $package = ServicePackage::findOrFail($id);
+        $services = Service::all();
+        return view('service_package.edit', compact('package', 'services'));
+    }
+
 
     /**
      * Update the specified service package.
@@ -82,11 +94,9 @@ class ServicePackageController extends Controller
 
         $package->update($request->all());
 
-        return response()->json([
-            'message' => 'Service package updated successfully',
-            'package' => $package,
-        ]);
+        return redirect()->route('service_package.index')->with('success', 'Service package updated successfully');
     }
+
 
     /**
      * Remove the specified service package.
@@ -96,30 +106,11 @@ class ServicePackageController extends Controller
         $package = ServicePackage::findOrFail($id);
         $package->delete();
 
-        return response()->json(['message' => 'Service package deleted successfully']);
+        return redirect ()->route('service_package.index')->with('success', 'Service package deleted successfully');
     }
+
 
     /**
      * List packages by specific service.
      */
-    public function packagesByService($service_id)
-    {
-        $service = Service::with('packages')->findOrFail($service_id);
-        return response()->json($service->packages);
-    }
-
-    /**
-     * Toggle active/inactive status.
-     */
-    public function toggleStatus($id)
-    {
-        $package = ServicePackage::findOrFail($id);
-        $package->is_active = !$package->is_active;
-        $package->save();
-
-        return response()->json([
-            'message' => 'Service package status updated successfully',
-            'package' => $package,
-        ]);
-    }
-}
+   }

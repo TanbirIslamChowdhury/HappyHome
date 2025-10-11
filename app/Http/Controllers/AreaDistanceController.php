@@ -35,17 +35,14 @@ class AreaDistanceController extends Controller
             'auto'         => 'boolean', // If true, calculate automatically
             'distance_km'  => 'nullable|numeric|min:0',
         ]);
-
-        $from = Area::findOrFail($request->from_area_id);
-        $to   = Area::findOrFail($request->to_area_id);
         
         $distance = AreaDistance::create([
-            'from_area_id' => $from->id,
-            'to_area_id'   => $to->id,
-            'distance_km'  => $distanceKm,
+            'from_area_id' => $request->from_area_id,
+            'to_area_id'   => $request->to_area_id,
+            'distance_km'  => $request->distance_km,
         ]);
 
-        return redirect()->route('area_distances.index')->with('success', 'Distance created successfully');
+        return redirect()->route('area_distance.index')->with('success', 'Distance created successfully');
     }
 
     /**
@@ -75,10 +72,12 @@ class AreaDistanceController extends Controller
         ]);
 
         $distance->update([
-            'distance_km' => $request->distance_km,
+            'from_area_id' => $request->from_area_id,
+            'to_area_id'   => $request->to_area_id,
+            'distance_km'  => $request->distance_km,
         ]);
 
-        return redirect()->route('area_distances.index')->with('success', 'Distance updated successfully');
+        return redirect()->route('area_distance.index')->with('success', 'Distance updated successfully');
     }
 
     /**
@@ -89,6 +88,10 @@ class AreaDistanceController extends Controller
         $distance = AreaDistance::findOrFail($id);
         $distance->delete();
 
-        return redirect()->route('area_distances.index')->with('success', 'Distance deleted successfully');
+        return redirect()->route('area_distance.index')->with('success', 'Distance deleted successfully');
+
+
     }
+
 }
+

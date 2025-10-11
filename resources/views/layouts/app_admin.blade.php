@@ -218,7 +218,7 @@
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="" class="menu-link">
+                  <a href="{{route('service_package.index')}}" class="menu-link">
                     <div data-i18n="Connections" class=" text-info ">Service Packages</div>
                   </a>
                 </li>
@@ -228,27 +228,27 @@
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="" class="menu-link">
+                  <a href="{{route('area_distance.index')}}" class="menu-link">
                     <div data-i18n="Connections" class=" text-primary">Area Distances </div>
                   </a>
                 </li>
                  <li class="menu-item">
-                  <a href="" class="menu-link">
+                  <a href="{{route('booking.index')}}" class="menu-link">
                     <div data-i18n="Connections" class=" text-primary "> Bookings </div>
                   </a>
                 </li>
                  <li class="menu-item">
-                  <a href="" class="menu-link">
+                  <a href="{{route('booking_detail.index')}}" class="menu-link">
                     <div data-i18n="Connections" class=" text-primary "> Booking Details </div>
                   </a>
                 </li>
                  <li class="menu-item">
-                  <a href="" class="menu-link">
+                  <a href="{{route('feedback.index')}}" class="menu-link">
                     <div data-i18n="Connections" class=" text-primary "> Feedbacks </div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="" class="menu-link">
+                  <a href="{{route('provider_rating.index')}}" class="menu-link">
                     <div data-i18n="Connections" class=" text-primary ">Provider Ratings</div>
                   </a>
                 </li>
@@ -448,7 +448,7 @@
                     document.write(new Date().getFullYear());
                   </script>
                   , made by
-                  <a href="#" target="_blank" class="footer-link fw-bolder">Tanbir Islam(Shibir)</a>
+                  <a href="#" target="_blank" class="footer-link fw-bolder">Tanbir Islam</a>
                 </div>
                 <div>
                   <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>

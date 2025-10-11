@@ -33,7 +33,7 @@
                 <td>{{ $data->address }}</td>
                 <td>
                  
-                      <a class="btn btn-info" href="{{ route('customer.edit', $data->id) }}"
+                      <a class="btn btn-sm btn-info" href="{{ route('customer.edit', $data->id) }}"
                         ><i class=""></i> Edit</a
                       >
                       <form action="{{ route('customer.destroy', $data->id) }}" method="POST" style="display: inline;">
