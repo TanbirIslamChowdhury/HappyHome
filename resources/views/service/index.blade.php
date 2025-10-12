@@ -23,7 +23,7 @@
             <tbody class="table-border-bottom-0">
               @foreach($service as $service)
               <tr>
-                <td>{{ $service->id }}</td>
+                <td>{{ $loop->iteration }}</td>
                 <td>{{ $service->name }}</td>
                 <td>{{ $service->description }}</td>
                 <td>{{ $service->billing_type }}</td>

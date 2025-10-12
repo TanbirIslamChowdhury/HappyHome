@@ -257,9 +257,12 @@
                                 <div class="col-12 col-sm-6">
                                     <select class="form-select border-0" name="service"style="height: 55px;">
                                         <option selected>Select A Service</option>
-                                        <option value="1">Plumbing</option>
-                                        <option value="2">Electrical</option>
-                                        <option value="3">Carpenter</option>
+                                        <option value="1">Service 1</option>
+                                        <option value="2">Service 2</option>
+                                        <option value="3">Service 3</option>
+                                        <option value="4">Service 4</option>
+                                        <option value="5">Service 5</option>
+                                       
                                     </select>
                                 </div>
                                 {{-- <div class="col-12 col-sm-6">
