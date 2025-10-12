@@ -248,6 +248,32 @@
                                 <div class="col-12 col-sm-6">
                                     <input type="text" class="form-control border-0" placeholder="Your Name" name="name" style="height: 55px;">
                                 </div>
+
+                                 <div class="col-12 col-sm-6">
+                                    <input type="text" class="form-control border-0" placeholder="customerID" name="customer_id" style="height: 55px;">
+                                </div>
+
+                                 <div class="col-12 col-sm-6">
+                                    <input type="text" class="form-control border-0" placeholder="serviceID" name="service_id" style="height: 55px;">
+                                </div>
+                                    <div class="col-12 col-sm-6">
+                                    <input type="text" class="form-control border-0" placeholder="ServicePackageID" name="service_package_id" style="height: 55px;">
+                                </div>
+                                    <div class="col-12 col-sm-6">
+                                    <input type="text" class="form-control border-0" placeholder="ProviderID" name="provider_id" style="height: 55px;">
+                                </div>
+
+                                    <div class="col-12 col-sm-6">
+                                    <input type="text" class="form-control border-0" placeholder="status" name="status" style="height: 55px;">
+                                </div>
+                                    <div class="col-12 col-sm-6">
+                                    <input type="date" class="form-control border-0" placeholder="BookingDate" name="booking_date" style="height: 55px;">
+                                </div>
+                                    <div class="col-12 col-sm-6">
+                                    <input type="text" class="form-control border-0" placeholder="TotalAmount" name="total_amount" style="height: 55px;">
+                                </div>
+
+                                
                                 <div class="col-12 col-sm-6">
                                     <input type="email" class="form-control border-0" placeholder="Your Email" name="email" style="height: 55px;">
                                 </div>
