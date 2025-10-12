@@ -245,9 +245,9 @@
                         <h1 class="mb-4">Book For A Service</h1>
                         <form>
                             <div class="row g-3">
-                                <div class="col-12 col-sm-6">
+                                {{-- <div class="col-12 col-sm-6">
                                     <input type="text" class="form-control border-0" placeholder="Your Name" name="name" style="height: 55px;">
-                                </div>
+                                </div> --}}
 
                                  <div class="col-12 col-sm-6">
                                     <input type="text" class="form-control border-0" placeholder="customerID" name="customer_id" style="height: 55px;">
@@ -264,7 +264,7 @@
                                 </div>
 
                                     <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control border-0" placeholder="status" name="status" style="height: 55px;">
+                                    <input type="text" class="form-control border-0" placeholder="Status" name="status" style="height: 55px;">
                                 </div>
                                     <div class="col-12 col-sm-6">
                                     <input type="date" class="form-control border-0" placeholder="BookingDate" name="booking_date" style="height: 55px;">
@@ -274,12 +274,12 @@
                                 </div>
 
                                 
-                                <div class="col-12 col-sm-6">
+                                {{-- <div class="col-12 col-sm-6">
                                     <input type="email" class="form-control border-0" placeholder="Your Email" name="email" style="height: 55px;">
-                                </div>
-                                  <div class="col-12 col-sm-6">
+                                </div> --}}
+                                  {{-- <div class="col-12 col-sm-6">
                                     <input type="phone_number" name="phone_number" class="form-control border-0" placeholder="Phone" style="height: 55px;">
-                                </div>
+                                </div> --}}
                                 <div class="col-12 col-sm-6">
                                     <select class="form-select border-0" name="service"style="height: 55px;">
                                         <option selected>Select A Service</option>
@@ -298,9 +298,9 @@
                                             placeholder="Service Date" data-target="#date1" data-toggle="datetimepicker" style="height: 55px;">
                                     </div>
                                 </div> --}}
-                               <div class="col-12">
+                               {{-- <div class="col-12">
                                     <textarea class="form-control border-0" placeholder="Address"></textarea>
-                                </div>
+                                </div> --}}
                                 {{-- <div class="col-12">
                                     <textarea class="form-control border-0" placeholder="Special Request"></textarea>
                                 </div> --}}
