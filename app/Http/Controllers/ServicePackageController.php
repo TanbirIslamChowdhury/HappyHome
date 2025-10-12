@@ -62,7 +62,7 @@ class ServicePackageController extends Controller
     public function show($id)
     {
         $package = ServicePackage::with('service')->findOrFail($id);
-       
+
     }
 
     public function edit($id)

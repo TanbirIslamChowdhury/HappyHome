@@ -1,41 +1,3 @@
-
-Table service_packages {
-  id int [pk, increment]
-  service_id int [ref: > services.id]
-  name varchar(100)
-  description text
-  base_price decimal(10,2)
-  unit_price decimal(10,2)
-  created_at timestamp
-  updated_at timestamp
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @extends('layouts.app_admin')
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
@@ -50,15 +12,12 @@ Table service_packages {
                         <div class="row">
                             <div class="col-sm-6">
                                 <label for="name" class="form-label">Service ID</label>
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="service_id"
-                                    placeholder="service_id"
-                                    name="service_id"
-                                    value="{{ $service->id }}"
-                                    
-                                    />
+                                <select class="form-control" id="service_id" placeholder="service_id" name="service_id">
+                                    @forelse ($services as $service)
+                                        <option value="{{ $service->id }}">{{ $service->name }}</option>
+                                    @empty
+                                    @endforelse
+                                </select>
                                 @error('service_id')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
@@ -71,12 +30,12 @@ Table service_packages {
                                     id="name"
                                     placeholder="name"
                                     name="name"
-                                    
+
                                     value="{{ $service->name }}"
 
 
 
-                                />  
+                                />
                                 @error('name')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
