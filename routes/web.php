@@ -62,6 +62,19 @@ Route::get('/contact', function () {
 
 
 
+
+Route::get('/client_login', function () {
+    return view('client_login');
+})->name('client_login');
+
+
+
+
+Route::get('/client_signup', function () {
+    return view('client_signup');
+})->name('client_signup);');
+
+
 // Route::get('/front_products',function(){
 //     return view('products');
 // })->name('front_products');

@@ -450,7 +450,7 @@
                   , made by
                   <a href="#" target="_blank" class="footer-link fw-bolder">Tanbir Islam</a>
                 </div>
-                <div>
+                {{-- <div>
                   <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>
                   <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More Themes</a>
 
@@ -467,7 +467,7 @@
                     class="footer-link me-4"
                     >Support</a
                   >
-                </div>
+                </div> --}}
               </div>
             </footer>
             <!-- / Footer -->

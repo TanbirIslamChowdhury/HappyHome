@@ -250,11 +250,11 @@
                                 </div> --}}
 
                                  <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control border-0" placeholder="customerID" name="customer_id" style="height: 55px;">
+                                    <input type="text" class="form-control border-0" placeholder="CustomerID" name="customer_id" style="height: 55px;">
                                 </div>
 
                                  <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control border-0" placeholder="serviceID" name="service_id" style="height: 55px;">
+                                    <input type="text" class="form-control border-0" placeholder="ServiceID" name="service_id" style="height: 55px;">
                                 </div>
                                     <div class="col-12 col-sm-6">
                                     <input type="text" class="form-control border-0" placeholder="ServicePackageID" name="service_package_id" style="height: 55px;">
