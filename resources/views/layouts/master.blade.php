@@ -53,8 +53,14 @@
             </div>
             <div class="col-lg-9 col-md-12 text-end">
                 <div class="h-100 d-inline-flex align-items-center me-4">
-                    <i class="fa fa-map-marker-alt text-primary me-2"></i>
-                    <p class="m-0">123 Street, New York, USA</p>
+                    @auth('customer')
+                        <a href="{{route('customer_panel.dashboard')}}" class="btn btn-primary">Dashboard</a> &nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="{{route('customer_panel.logout')}}" class="btn btn-danger">Logout</a>
+                    @else
+                        <a href="{{route('customer_panel.login')}}" class="btn btn-sm-square bg-white text-primary me-2"><i class="fa fa-sign-in-alt"></i> Customer Login</a>
+                        <a href="{{route('customer_panel.register')}}" class="btn btn-sm-square bg-white text-primary me-2"><i class="fa fa-user-plus"></i> Customer Register</a>
+                    @endauth
+                    
                 </div>
                 <div class="h-100 d-inline-flex align-items-center me-4">
                     <i class="far fa-envelope-open text-primary me-2"></i>

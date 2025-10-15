@@ -4,6 +4,7 @@ use App\Models\Service;
 use App\Models\Area;
 use App\Models\AreaDistance;
 use App\Models\ServicePackage;
+use App\Models\Booking;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -24,7 +25,6 @@ class FrontendController extends Controller
     public function get_service_price(Request $request){
         $service = Service::find($request->service_id);
         $service_package = ServicePackage::where('service_id',$request->service_id)->first();
-//return response()->json(['service' => $service, 'service_package' => $service_package]);
         if($service){
             if($service->billing_type=='distance' || $service->billing_type=='area'){
                 $distance = AreaDistance::where('from_area_id', $request->area_from)
@@ -52,24 +52,13 @@ class FrontendController extends Controller
     
     public function service_booking(Request $request)
     {
-        return $request->all();
-        $request->validate([
-            'name'     => 'required|string|max:255',
-            'email'    => 'required|string|email|unique:service_providers,email',
-            'password' => 'required|string|min:6',
-            'phone'    => 'required|string|max:20',
-            'address'  => 'required|string|max:255',
+        $request->merge([
+            'customer_id' => auth()->guard('customer')->id(), // Assuming the user is authenticated
+            'status' => 'pending', // Default status
         ]);
+        $bookings = Booking::create($request->all());
 
-        $providers = ServiceProvider::create([
-            'name'     => $request->name,
-            'email'    => $request->email,
-            'password' => $request->password,
-            'phone'    => $request->phone,
-            'address'  => $request->address,
-        ]);
-
-        return redirect()->route('service_provider.index')->with('success', 'Service provider registered successfully');
+        return redirect()->route('home')->with('success', 'Service provider registered successfully');
     }
 
     

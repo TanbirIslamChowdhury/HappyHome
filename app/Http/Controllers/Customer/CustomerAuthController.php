@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Customer;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Customer;
+use App\Models\Booking;
 
 class CustomerAuthController extends Controller
 {
@@ -51,7 +52,17 @@ class CustomerAuthController extends Controller
     }
 
     public function dashboard(){
-        return view('customer.dashboard');
+        $bookings = Booking::where('customer_id', auth()->guard('customer')->id())->get();
+        return view('customer.dashboard', compact('bookings'));
+    }
+
+    public function invoice($id){
+        $booking = Booking::where('id', $id)->where('customer_id', auth()->guard('customer')->id())->first();
+        if(!$booking){
+            return redirect()->route('customer_panel.dashboard')->with('error', 'Invoice not found');
+        }
+        return view('customer.invoice', compact('booking'));
+
     }
 
     public function show($id) {

@@ -143,5 +143,10 @@ Route::prefix('customer_panel')->group(function(){
     Route::post('/store', [CustomerAuthController::class, 'store'])->name('customer_panel.store');
     Route::middleware(['auth:customer'])->group(function () {
         Route::get('/dashboard', [CustomerAuthController::class, 'dashboard'])->name('customer_panel.dashboard');
+        Route::get('/invoice/{id}', [CustomerAuthController::class, 'invoice'])->name('customer_panel.invoice');
+        Route::get('/logout', function(){
+            auth()->guard('customer')->logout();
+            return redirect()->route('customer_panel.login');
+        })->name('customer_panel.logout');
     }); 
 });

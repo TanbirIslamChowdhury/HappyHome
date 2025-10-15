@@ -249,12 +249,8 @@
                             <div class="row g-3">
 
                                  <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control border-0" placeholder="CustomerID" name="customer_id" style="height: 55px;">
-                                </div>
-
-                                 <div class="col-12 col-sm-6">
                                     <select onchange="check_service(this)" class="form-control border-0" name="service_id" style="height: 55px;">
-                                        <option selected>Select A Service</option>
+                                        <option value="">Select A Service</option>
                                         @foreach($services as $service)
                                             <option data-billtype={{ $service->billing_type}} value="{{ $service->id }}">{{ $service->name }}</option>
                                         @endforeach
@@ -263,7 +259,7 @@
                                     
                                 <div class="col-12 col-sm-6">
                                     <select onchange="get_price()" class="form-control border-0" name="area_from" style="height: 55px;">
-                                        <option selected>Select From Area</option>
+                                        <option  value="">Select From Area</option>
                                         @foreach($areas as $area)
                                             <option value="{{ $area->id }}">{{ $area->name }}</option>
                                         @endforeach
@@ -271,7 +267,7 @@
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <select onchange="get_price()" class="form-control border-0" name="area_to" style="height: 55px;">
-                                        <option selected>Select To Area</option>
+                                        <option  value="" selected>Select To Area</option>
                                         @foreach($areas as $area)
                                             <option value="{{ $area->id }}">{{ $area->name }}</option>
                                         @endforeach
