@@ -1,6 +1,4 @@
-
-
-@extends('layouts.master')
+@extends('layouts.master_customer')
 @section('content')
     <div class="container-xxl py-5">
         <div class="container">
@@ -11,18 +9,19 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6 col-md-8">
                     <div class="bg-light rounded p-4 p-sm-5 my-4 mx-3">
-                        <form action="">
+                        <form action="{{route('customer_panel.check')}}" method="POST">
+                            @csrf
                             <div class="row g-3">
                                 <div class="col-12 col-sm-6">
-                                    <label for="username" class="form-label">Username</label>
-                                    <input type="text" class="form-control" id="username" placeholder="Your Username">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="text" class="form-control" id="email" placeholder="Your Email" name="email">
                                 </div>
 
                                  
                                 
                                 <div class="col-12 col-sm-6">
                                     <label for="password" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="password" placeholder="Your Password">
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Your Password">
                                 </div>
                                 
                                 
@@ -33,7 +32,7 @@
                                     <a href="#">Forgot Password?</a>
                                 </div>
                                 <div class="col-12">
-                                    <p class="mb-0">Don't have an Account? <a href="client_signup">Sign Up</a></p>
+                                    <p class="mb-0">Don't have an Account? <a href="{{route('customer_panel.register')}}">Sign Up</a></p>
                                 </div>
                             </div>
                         </form>
@@ -49,47 +48,3 @@
 
     </div>    <!-- Contact End -->
 @endsection 
-@section('title')
-    Client Login
-@endsection
-@section('active_login')
-    active
-@endsection
-@section('active_home')
-@endsection
-@section('active_products')
-@endsection
-@section('active_about')
-@endsection
-@section('active_contact')
-@endsection
-@section('active_dashboard')
-@endsection
-@section('active_register')
-@endsection
-@section('active_services')
-@endsection
-@section('active_team')
-@endsection
-
-@section('active_faq')
-@endsection
-@section('active_testimonial')
-@endsection
-@section('active_privacy')
-@endsection
-@section('active_terms')
-@endsection
-
-@section('active_blog')
-@endsection
-@section('active_single_blog')
-@endsection
-@section('active_cart')
-@endsection
-@section('active_checkout')
-@endsection
-@section('active_search')
-@endsection
-@section('active_error')
-@endsection

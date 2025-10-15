@@ -1,4 +1,4 @@
-@extends('layouts.app_admin')
+@extends('layouts.master_customer')
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
     <h4 class="fw-bold py-3 mb-4">Add New Customer</h4>
@@ -7,7 +7,7 @@
         <div class="col-md-12">
             <div class="card mb-4">
                 <div class="card-body">
-                    <form method="post" action="{{route('customer.store')}}">
+                    <form method="post" action="{{route('customer_panel.store')}}">
                         @csrf
                         <div class="row">
                             <div class="col-sm-6">
@@ -53,6 +53,20 @@
                                 @enderror
                             </div>
                             <div class="col-sm-6">
+                                <label for="password_confirmation" class="form-label">Confirm Password</label>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="password_confirmation"
+                                    placeholder="password_confirmation"
+                                    name="password_confirmation"
+                                    value="{{old('password_confirmation')}}"
+                                />
+                                @error('password_confirmation')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="col-sm-6">
                                 <label for="phone" class="form-label">Phone</label>
                                 <input
                                     type="text"
@@ -66,7 +80,22 @@
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             
-                        </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="address" class="form-label">Address</label>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="address"
+                                    placeholder="address"
+                                    name="address"
+                                    value="{{old('address')}}"
+                                />
+                                @error('address')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            
+                            </div>
                         
                         <button type="submit" class="btn btn-primary mt-3">Save</button>
                     </form>

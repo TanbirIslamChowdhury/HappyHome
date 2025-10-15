@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\FrontendController;
+
 
 use App\Http\Controllers\UserController;
 
@@ -25,6 +27,9 @@ use App\Http\Controllers\FeedbackController;
 
 use App\Http\Controllers\ProviderRatingController;
 
+// cuatomer auth
+use App\Http\Controllers\Customer\CustomerAuthController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,9 +41,9 @@ use App\Http\Controllers\ProviderRatingController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', [FrontendController::class, 'welcome'])->name('home');
+Route::post('get_service_price', [FrontendController::class, 'get_service_price'])->name('get_service_price');
+Route::post('service_booking', [FrontendController::class, 'service_booking'])->name('service_booking');
 
 Route::get('/services', function () {
     return view('services');
@@ -116,11 +121,12 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('booking_detail', BookingDetailController::class);
     Route::resource('feedback', FeedbackController::class);
     Route::resource('provider_rating', ProviderRatingController::class);
-  Route::get('/admin', [App\Http\Controllers\UserController::class, 'index'])->name('admin');
+    Route::get('/admin', [App\Http\Controllers\UserController::class, 'index'])->name('admin');
 //  Route::get('/customers', [App\Http\Controllers\CustomerController::class, 'index'])->name('customers');
-//   Route::resource('users', UserController::class);
+//  Route::resource('users', UserController::class);
 
 });
+
 
 
 
@@ -129,3 +135,13 @@ Route::middleware(['auth'])->group(function(){
 //     Route::resource('users', UserController::class);
 // });
 
+// customer auth routes
+Route::prefix('customer_panel')->group(function(){
+    Route::get('/login', [CustomerAuthController::class, 'login'])->name('customer_panel.login');
+    Route::post('/check', [CustomerAuthController::class, 'checkLogin'])->name('customer_panel.check');
+    Route::get('/register', [CustomerAuthController::class, 'register'])->name('customer_panel.register');
+    Route::post('/store', [CustomerAuthController::class, 'store'])->name('customer_panel.store');
+    Route::middleware(['auth:customer'])->group(function () {
+        Route::get('/dashboard', [CustomerAuthController::class, 'dashboard'])->name('customer_panel.dashboard');
+    }); 
+});

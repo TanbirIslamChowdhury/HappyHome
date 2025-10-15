@@ -243,72 +243,70 @@
                 <div class="col-lg-8">
                     <div class="bg-light text-center p-5">
                         <h1 class="mb-4">Book For A Service</h1>
-                        <form>
+                        @auth('customer')
+                            <form action="{{ route('service_booking') }}" method="POST">
+                                @csrf
                             <div class="row g-3">
-                                {{-- <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control border-0" placeholder="Your Name" name="name" style="height: 55px;">
-                                </div> --}}
 
                                  <div class="col-12 col-sm-6">
                                     <input type="text" class="form-control border-0" placeholder="CustomerID" name="customer_id" style="height: 55px;">
                                 </div>
 
                                  <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control border-0" placeholder="ServiceID" name="service_id" style="height: 55px;">
-                                </div>
-                                    <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control border-0" placeholder="ServicePackageID" name="service_package_id" style="height: 55px;">
-                                </div>
-                                    <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control border-0" placeholder="ProviderID" name="provider_id" style="height: 55px;">
-                                </div>
-
-                                    <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control border-0" placeholder="Status" name="status" style="height: 55px;">
-                                </div>
-                                    <div class="col-12 col-sm-6">
-                                    <input type="date" class="form-control border-0" placeholder="BookingDate" name="booking_date" style="height: 55px;">
-                                </div>
-                                    <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control border-0" placeholder="TotalAmount" name="total_amount" style="height: 55px;">
-                                </div>
-
-                                
-                                {{-- <div class="col-12 col-sm-6">
-                                    <input type="email" class="form-control border-0" placeholder="Your Email" name="email" style="height: 55px;">
-                                </div> --}}
-                                  {{-- <div class="col-12 col-sm-6">
-                                    <input type="phone_number" name="phone_number" class="form-control border-0" placeholder="Phone" style="height: 55px;">
-                                </div> --}}
-                                <div class="col-12 col-sm-6">
-                                    <select class="form-select border-0" name="service"style="height: 55px;">
+                                    <select onchange="check_service(this)" class="form-control border-0" name="service_id" style="height: 55px;">
                                         <option selected>Select A Service</option>
-                                        <option value="1">Service 1</option>
-                                        <option value="2">Service 2</option>
-                                        <option value="3">Service 3</option>
-                                        <option value="4">Service 4</option>
-                                        <option value="5">Service 5</option>
-                                       
+                                        @foreach($services as $service)
+                                            <option data-billtype={{ $service->billing_type}} value="{{ $service->id }}">{{ $service->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
-                                {{-- <div class="col-12 col-sm-6">
-                                    <div class="date" id="date1" data-target-input="nearest">
-                                        <input type="text"
-                                            class="form-control border-0 datetimepicker-input"
-                                            placeholder="Service Date" data-target="#date1" data-toggle="datetimepicker" style="height: 55px;">
-                                    </div>
-                                </div> --}}
-                               {{-- <div class="col-12">
-                                    <textarea class="form-control border-0" placeholder="Address"></textarea>
-                                </div> --}}
-                                {{-- <div class="col-12">
-                                    <textarea class="form-control border-0" placeholder="Special Request"></textarea>
-                                </div> --}}
+                                    
+                                <div class="col-12 col-sm-6">
+                                    <select onchange="get_price()" class="form-control border-0" name="area_from" style="height: 55px;">
+                                        <option selected>Select From Area</option>
+                                        @foreach($areas as $area)
+                                            <option value="{{ $area->id }}">{{ $area->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <select onchange="get_price()" class="form-control border-0" name="area_to" style="height: 55px;">
+                                        <option selected>Select To Area</option>
+                                        @foreach($areas as $area)
+                                            <option value="{{ $area->id }}">{{ $area->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <input onkeyup="get_price()" type="text" class="form-control border-0" placeholder="Square Feet" name="area_sqft" style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <input onkeyup="get_price()" type="text" class="form-control border-0" placeholder="Hour" name="hours" style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <input readonly type="text" class="form-control border-0" placeholder="Distance" name="distance" style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <input type="text" readonly class="form-control border-0" placeholder="Base Price" name="base_price" style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <input type="text" readonly class="form-control border-0" placeholder="Unit Price" name="unit_price" style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <input type="text" readonly class="form-control border-0" placeholder="Service Price" name="service_price" style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <input type="date" class="form-control border-0" placeholder="BookingDate" name="booking_date" style="height: 55px;">
+                                </div>
                                 <div class="col-12">
                                     <button class="btn btn-primary w-100 py-3" type="submit">Book Now</button>
                                 </div>
                             </div>
                         </form>
+                        @else
+                            <h3 class="mb-4">Please <a href="{{route('customer_panel.login')}}">Login</a> to Book a Service</h3>
+                        @endauth
+                        
                     </div>
                 </div>
             </div>
@@ -477,6 +475,62 @@
     <!-- Testimonial End -->
 
 @endsection
+@push('scripts')
+    <script>
+        function check_service(e){
+            var billtype = e.options[e.selectedIndex].getAttribute('data-billtype');
+           
+            if(billtype == 'area' || billtype == 'distance'){
+                $('select[name="area_from"]').parent().show();
+                $('select[name="area_to"]').parent().show();
+                $('input[name="area_sqft"]').parent().hide();
+                $('input[name="hours"]').parent().hide();
+            }else if(billtype == 'sqft'){
+                $('select[name="area_from"]').parent().hide();
+                $('select[name="area_to"]').parent().hide();
+                $('input[name="hours"]').parent().hide();
+                $('input[name="area_sqft"]').parent().show();
+            }else{
+                $('select[name="area_from"]').parent().hide();
+                $('select[name="area_to"]').parent().hide();
+                $('input[name="hours"]').parent().show();
+                $('input[name="area_sqft"]').parent().hide();
+            }
+        }
 
+        function get_price(){
+            
+            var service_id = $('select[name="service_id"]').val();
+            var area_from = $('select[name="area_from"]').val();
+            var area_to = $('select[name="area_to"]').val();
+            var area_sqft = $('input[name="area_sqft"]').val();
+            var hours = $('input[name="hours"]').val();
+            if(service_id){
+                $.ajax({
+                    url: '{{ route("get_service_price") }}',
+                    type: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        service_id: service_id,
+                        area_from: area_from,
+                        area_to: area_to,
+                        area_sqft: area_sqft,
+                        hours: hours
+                    },
+                    success: function(response) {
+                        $('input[name="base_price"]').val(response.base_price);
+                        $('input[name="unit_price"]').val(response.unit_price);
+                        $('input[name="distance"]').val(response.distance);
+                        $('input[name="service_price"]').val(response.service_price);
+                        
+                    },
+                    error: function(xhr) {
+                        console.log(xhr.responseText);
+                    }
+                });
+            }
+        }
+    </script>
+@endpush
 
 
