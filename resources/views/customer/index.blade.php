@@ -1,4 +1,3 @@
-
 @extends('layouts.app_admin')
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
@@ -7,7 +6,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="card">
-        <h5 class="card-header"><a href="{{ route('customer.create') }}" class="btn btn-primary m-3">Add New Customer</a></h5>
+        {{-- <h5 class="card-header"><a href="{{ route('customer.create') }}" class="btn btn-primary m-3">Add New Customer</a></h5> --}}
         
         <div class="table-responsive text-nowrap">
           <table class="table">

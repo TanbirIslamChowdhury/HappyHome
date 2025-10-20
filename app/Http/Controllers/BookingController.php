@@ -18,7 +18,7 @@ class BookingController extends Controller
     public function index()
     {
         $bookings = Booking::with(['customer', 'provider', 'service', 'package', 'details'])->get();
-        return response()->json($bookings);
+        return view('booking.index', compact('bookings'));
     }
 
     /**
@@ -81,6 +81,19 @@ class BookingController extends Controller
 
         return response()->json($booking);
     }
+    public function edit($id)
+    {
+        $booking = Booking::with(['customer', 'provider', 'service', 'package', 'details'])
+            ->findOrFail($id);
+
+        $customers = Customer::all();
+        $services = Service::all();
+        $packages = ServicePackage::all();
+        $providers = ServiceProvider::all();
+
+        return view('booking.edit', compact('booking', 'customers', 'services', 'packages', 'providers'));
+    }
+
 
     /**
      * Assign provider (admin only).
@@ -106,24 +119,35 @@ class BookingController extends Controller
     {
         $booking = Booking::findOrFail($id);
 
+
         $request->validate([
             'status' => 'nullable|in:pending,accepted,completed,cancelled',
             'details' => 'nullable|array',
+
         ]);
+
 
         if ($request->filled('status')) {
             $booking->status = $request->status;
         }
 
+
         if ($request->has('details')) {
             $details = $booking->details;
             $details->update($request->input('details'));
-            $booking->total_amount = $this->calculateTotalAmount($booking, $details);
+
+            // $booking->total_amount = $this->calculateTotalAmount($booking, $details);
         }
+
+
+
 
         $booking->save();
 
-        return response()->json(['message' => 'Booking updated successfully', 'booking' => $booking->load('details')]);
+
+        
+        return redirect()->route('booking.index')->with('success', 'Booking updated successfully');
+
     }
 
     /**
@@ -146,7 +170,7 @@ class BookingController extends Controller
             ->where('customer_id', $customerId)
             ->get();
 
-        return response()->json($bookings);
+      return redirect()->route('booking.index')->with('success', 'Booking updated successfully');
     }
 
     /**

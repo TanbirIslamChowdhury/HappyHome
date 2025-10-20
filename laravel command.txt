@@ -52,6 +52,7 @@ class User extends Authenticatable
 laravel api auth
 *composer require laravel/sanctum
 *php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
+*php artisan migrate
 *php artisan make:controller Api/UserAuthController
 
 
